@@ -10,8 +10,10 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 const Hero = ({ title, subtitle }) => {
+  const router = useRouter();
   const subtitleRef = useRef(null);
   const titleRef = useRef(null);
   const ctaRef = useRef(null);
@@ -34,11 +36,11 @@ const Hero = ({ title, subtitle }) => {
       }
     );
   }, [titleRef, subtitleRef, ctaRef]);
-
+  console.log('router', router);
   return (
     <Flex
       direction="row"
-      wrapw
+      wrap
       w="full"
       h="100vh"
       align="center"
@@ -67,6 +69,7 @@ const Hero = ({ title, subtitle }) => {
           color="#FFF9F2"
           borderRadius="0"
           fontSize="18px"
+          onClick={() => router.push(`${router.pathname}#form`)}
         >
           Solicita oferta
         </Button>

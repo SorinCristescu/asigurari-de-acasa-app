@@ -1,19 +1,11 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+
 import Input from './Input';
 import TextArea from './TextArea';
+import Select from './Select';
 import { Button, Heading, Text } from '@chakra-ui/react';
-
-const options = [
-  {
-    value: 'first',
-    label: 'First option',
-  },
-  {
-    value: 'second',
-    label: 'Second option',
-  },
-];
+import { insurances } from '../../utils/insurances';
 
 const FormContainer = () => {
   const initialValues = {
@@ -21,29 +13,33 @@ const FormContainer = () => {
     email: '',
     phone: '',
     message: '',
+    insurance: '',
   };
   const validationSchema = Yup.object({
-    name: Yup.string().required('Required!'),
+    name: Yup.string().required('Numele este obligatoriu!'),
+    insurance: Yup.string().required('Alege un tip de asigurare dorit!'),
     email: Yup.string()
-      .email('Adresa de email nu are formatul corect')
-      .required('Required!'),
-    phone: Yup.string().required('Required!'),
-    message: Yup.string().required('Required!'),
+      .email('Adresa de email nu are formatul corect!')
+      .required('Adresa de email este obligatorie!'),
+    phone: Yup.string().required('Numarul de telefon este obligatoriu!'),
+    message: Yup.string().required('Mesajul este obligatoriu!'),
   });
 
-  const onSubmit = (values, onSubmitProps) => {
+  const onSubmit = async (values, onSubmitProps) => {
     console.log(values);
+    const res = await fetch('/api/mailchimp', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-    // await fetch('/api/auth/signup', {
-    //     method: 'POST',
-    //     body: JSON.stringify({
-    //       email: values.email,
-    //       password: values.password,
-    //     }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-    onSubmitProps.setSubmitting(false);
-    onSubmitProps.resetForm();
+    if (!res.ok) {
+      toast.error('Ceva nu a functionat corect!');
+    } else {
+      onSubmitProps.setSubmitting(false);
+      onSubmitProps.resetForm();
+      toast.success('Informatia a fost trimisa cu success!');
+    }
   };
 
   return (
@@ -52,7 +48,15 @@ const FormContainer = () => {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ isValid, onSubmitProps, dirty, isSubmitting }) => (
+      {({
+        values,
+        isValid,
+        onSubmitProps,
+        dirty,
+        isSubmitting,
+        setSubmitting,
+        resetForm,
+      }) => (
         <Form style={{ width: '400px' }}>
           <div
             style={{
@@ -61,12 +65,16 @@ const FormContainer = () => {
               marginBottom: '20px',
             }}
           >
-            <Heading as="h3" size="lg">
-              Doresc asigurare
+            <Heading as="h4" size="md">
+              Doresc
             </Heading>
-            <Heading as="h3" size="lg" ml="5px">
-              de locuinta
-            </Heading>
+            <Select
+              options={insurances}
+              fontSize="20px"
+              fontWeight="bold"
+              width="400px"
+              name="insurance"
+            />
           </div>
 
           <Input type="text" label="Nume" name="name" />

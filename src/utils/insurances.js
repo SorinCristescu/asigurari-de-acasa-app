@@ -5,6 +5,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-rca',
+    value: 'Asigurare RCA',
     steps: [
       {
         count: '01',
@@ -45,6 +46,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-casco',
+    value: 'Asigurare CASCO',
     steps: [
       {
         count: '01',
@@ -85,6 +87,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-de-locuinta',
+    value: 'Asigurare de locuinta',
     steps: [
       {
         count: '01',
@@ -125,6 +128,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-de-viata',
+    value: 'Asigurare de viata',
     steps: [
       {
         count: '01',
@@ -165,6 +169,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-de-sanatate',
+    value: 'Asigurare de sanatate',
     steps: [
       {
         count: '01',
@@ -205,6 +210,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-de-transport',
+    value: 'Asigurare de transport',
     steps: [
       {
         count: '01',
@@ -245,6 +251,7 @@ export const insurances = [
     description:
       'Completeaza formularul online cu:  tipul de asigurare, numele si prenumele propietarului',
     href: '/asigurare-de-accidente',
+    value: 'Asigurare de accidente',
     steps: [
       {
         count: '01',

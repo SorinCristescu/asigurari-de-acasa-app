@@ -1,10 +1,12 @@
 import PageHead from '../components/layout/PageHead';
 import Image from 'next/image';
-import Form from '../components/ui/Form';
+import MailchimpForm from '../components/ui/MailchimpForm';
 import Hero from '../components/ui/Hero';
 import Card from '../components/ui/Card';
+import Testimonial from '../components/ui/Testimonial';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import {
   Flex,
   Spacer,
@@ -16,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { insurances } from '../utils/insurances';
 import { partners } from '../utils/partners';
-
+import { testimonials } from '../utils/testimonials';
 const Index = () => {
   return (
     <>
@@ -36,7 +38,7 @@ const Index = () => {
         h="100vh"
         align="center"
         justify="space-between"
-        wrapw
+        wrap
       >
         <Flex
           minWidth="50%"
@@ -331,11 +333,38 @@ const Index = () => {
 
       {/* TESTIMONIALS 
     ----------------------*/}
-
+      <Flex
+        my="100px"
+        width="100%"
+        height="400px"
+        direction="column"
+        align="center"
+        justify="center"
+      >
+        <Heading fontSize="36px">Ce spun clientii nostri despre noi</Heading>
+        <Carousel
+          autoFocus
+          autoPlay
+          // centerMode={true}
+          // stopOnHover={false}
+          // infiniteLoop
+          interval={5000}
+          // showArrows={false}
+          showStatus={false}
+          // showIndicators={false}
+          transitionTime={2000}
+          width="800px"
+          height="500px"
+        >
+          {testimonials.map((testimonial, index) => (
+            <Testimonial key={index} testimonial={testimonial} />
+          ))}
+        </Carousel>
+      </Flex>
       {/* FORM 
     ----------------------*/}
-      <Center w="100%" h="100vh">
-        <Form />
+      <Center id="form" w="100%" h="100vh">
+        <MailchimpForm />
       </Center>
     </>
   );

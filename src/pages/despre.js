@@ -1,6 +1,6 @@
 import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
-import Form from '../components/ui/Form';
+import MailchimpForm from '../components/ui/MailchimpForm';
 import Card from '../components/ui/Card';
 import {
   Flex,
@@ -78,8 +78,8 @@ const Despre = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center w="100%" h="100vh">
-        <Form />
+      <Center id="form" w="100%" h="100vh">
+        <MailchimpForm />
       </Center>
     </>
   );

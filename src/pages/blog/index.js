@@ -1,24 +1,12 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import PageHead from '../components/layout/PageHead';
+import PageHead from '../../components/layout/PageHead';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Flex, Text, Heading, Button, Wrap, WrapItem } from '@chakra-ui/react';
-import Card from '../components/ui/Card';
+import BlogCard from '../../components/ui/BlogCard';
 
-const posts = [
-  { count: 1, title: 'weqwr', description: 'fef' },
-  { count: 2, title: 'qefef', description: 'fdfdf' },
-  { count: 3, title: 'fff', description: 'sdfwefd' },
-  { count: 4, title: 'dfef', description: 'sdfwef' },
-  { count: 5, title: 'weqwr', description: 'fef' },
-  { count: 6, title: 'qefef', description: 'fdfdf' },
-  { count: 7, title: 'fff', description: 'sdfwefd' },
-  { count: 8, title: 'dfef', description: 'sdfwef' },
-  { count: 9, title: 'adfwef', description: 'dfewfw' },
-  { count: 10, title: 'adfwef', description: 'dfewfw' },
-];
-const Blog = () => {
+const Blog = ({ posts }) => {
   const subtitleRef = useRef(null);
   const titleRef = useRef(null);
   const numberRef = useRef(null);
@@ -69,25 +57,23 @@ const Blog = () => {
         <Wrap
           my="50px"
           spacing="30px"
-          w="100%"
+          w="900px"
           direction="row"
-          align="flex-start"
-          justify="space-between"
+          align="center"
+          justify="center"
         >
           {posts?.map((post, index) => {
             return (
               <WrapItem
-                key={post.count}
+                w="900px"
+                key={post.id}
                 ref={(el) => (postRef.current[index] = el)}
               >
-                <Card
-                  item={post}
-                  width="220px"
-                  height="250px"
-                  headingSize="24px"
-                  padding="20px"
-                  // mx="10px"
-                />
+                <Link href={`/blog/${post.slug}`}>
+                  <a>
+                    <BlogCard post={post} />
+                  </a>
+                </Link>
               </WrapItem>
             );
           })}
@@ -98,3 +84,15 @@ const Blog = () => {
 };
 
 export default Blog;
+
+export async function getStaticProps() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts,
+      revalidate: 1,
+    },
+  };
+}

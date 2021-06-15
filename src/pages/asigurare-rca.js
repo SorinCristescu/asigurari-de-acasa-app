@@ -1,6 +1,6 @@
 import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
-import Form from '../components/ui/Form';
+import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
 
 import {
@@ -34,8 +34,8 @@ const AsigurareRCA = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center w="100%" h="100vh">
-        <Form />
+      <Center id="form" w="100%" h="100vh">
+        <MailchimpForm />
       </Center>
     </>
   );

@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import { Field } from 'formik';
 
-export default ({ placeholder, label, name, ...rest }) => {
+const TextArea = ({ placeholder, label, name, ...rest }) => {
   let [value, setValue] = useState('');
 
   let handleInputChange = (e) => {
@@ -20,10 +20,10 @@ export default ({ placeholder, label, name, ...rest }) => {
       {({ field, form }) => {
         return (
           <FormControl
-            isValid={form.errors[name] && form.touched[name]}
+            isInvalid={form.errors[name] && form.touched[name]}
             mb="20px"
           >
-            <FormLabel ftmlFor={name}>{label}</FormLabel>
+            <FormLabel htmlFor={name}>{label}</FormLabel>
             <Textarea
               id={name}
               placeholder={placeholder}
@@ -39,3 +39,5 @@ export default ({ placeholder, label, name, ...rest }) => {
     </Field>
   );
 };
+
+export default TextArea;
