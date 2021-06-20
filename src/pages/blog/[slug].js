@@ -1,5 +1,3 @@
-import { useRef, useEffect } from 'react';
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageHead from '../../components/layout/PageHead';
@@ -15,6 +13,7 @@ import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 
 const BlogPost = ({ post }) => {
   const router = useRouter();
+
   const deleteHandler = async (e) => {
     if (confirm('Are you sure?')) {
       const res = await fetch(
@@ -129,24 +128,36 @@ const BlogPost = ({ post }) => {
 
 export default BlogPost;
 
-export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
-  const posts = await res.json();
-  const paths = posts.map((post) => ({
-    params: {
-      slug: post.slug,
-    },
-  }));
-  return {
-    paths,
-    fallback: true,
-  };
-}
+// export async function getStaticPaths() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
+//   const posts = await res.json();
+//   const paths = posts.map((post) => ({
+//     params: {
+//       slug: post.slug,
+//     },
+//   }));
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }
 
-export async function getStaticProps({ params: { slug } }) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/posts?slug=${slug}`
-  );
+// export async function getStaticProps({ params: { slug } }) {
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_BASE_URL}/posts?slug=${slug}`
+//   );
+//   const posts = await res.json();
+
+//   return {
+//     props: {
+//       post: posts[0],
+//       revalidate: 1,
+//     },
+//   };
+// }
+
+export async function getServerSideProps({ query: { slug } }) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${slug}`);
   const posts = await res.json();
 
   return {
