@@ -1,7 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import {
   Flex,
@@ -20,72 +18,67 @@ const Steps = ({ steps }) => {
   const title = useRef(null);
   const text = useRef(null);
   const counter = useRef(null);
-  const [count, setCount] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  console.log('count', count);
+  const timer = useRef();
 
-  const tl = gsap.timeline({ repeat: -1 });
+  const [count, setCount] = useState(0);
+  const length = steps.length;
+
   useEffect(() => {
-    tl.fromTo(
+    timer.current = setInterval(() => {
+      // if (count === 0) {
+      next();
+      // }
+    }, 6500);
+    return () => {
+      clearInterval(timer.current);
+    };
+  }, [count]);
+
+  useEffect(() => {
+    gsap.fromTo(
       [arrow.current],
       {
-        height: '150px',
+        height: '50px',
       },
       {
         duration: 5,
         height: '232px',
-
         ease: 'power1.inOut',
       }
-    ).fromTo(
-      [title.current, text.current],
+    );
+    gsap.fromTo(
+      [counter.current, title.current, text.current],
       {
         y: '-20px',
         opacity: 0,
       },
       {
         duration: 1.5,
-
         y: '0px',
         opacity: 1,
-
+        stagger: {
+          amount: 0.8,
+        },
         ease: 'power1.inOut',
       }
     );
-    gsap.fromTo(
-      [counter.current],
-      {
-        y: '-20px',
-        opacity: 0,
-      },
-      {
-        duration: 1,
-        y: '0px',
-        opacity: 1,
+  }, [count]);
 
-        ease: 'power1.inOut',
-      }
-    );
-  }, [arrow, count, counter, title, text]);
-
-  const handleChange = (item, index) => {
-    setCount(item);
+  const next = () => {
+    setCount(count === length - 1 ? 0 : count + 1);
   };
-  const next = (item, index) => {
-    setCount(item);
-  };
-  const prev = (item, index) => {
-    setCount(item);
+  const prev = () => {
+    setCount(count === 0 ? length - 1 : count - 1);
   };
 
   return (
     <Flex
       w="100%"
-      h="70vh"
+      h="50vh"
       align="center"
       justify="center"
       position="relative"
-      mt="100px"
+      mt="150px"
     >
       <svg
         ref={arrow}
@@ -118,15 +111,15 @@ const Steps = ({ steps }) => {
         style={{ position: 'absolute', top: '0px', right: '0' }}
       >
         <IconButton
-          onClick={() => console.log('up')}
+          onClick={prev}
           variant="ghost"
           colorScheme="#4D4DFF"
-          fontSize="50px"
+          fontSize="20px"
           isRound
         >
           <svg
-            width="22"
-            height="32"
+            width="15"
+            height="20"
             viewBox="0 0 22 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -138,15 +131,15 @@ const Steps = ({ steps }) => {
           </svg>
         </IconButton>
         <IconButton
-          onClick={() => console.log('down')}
+          onClick={next}
           variant="ghost"
           colorScheme="#4D4DFF"
           fontSize="50px"
           isRound
         >
           <svg
-            width="22"
-            height="32"
+            width="15"
+            height="20"
             viewBox="0 0 22 32"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -158,41 +151,26 @@ const Steps = ({ steps }) => {
           </svg>
         </IconButton>
       </Flex>
-      <Carousel
-        // autoFocus
-        autoPlay
-        infiniteLoop
-        interval={5000}
-        axis="vertical"
-        showArrows={false}
-        showStatus={false}
-        showIndicators={false}
-        // onClickItem={}
-        onChange={handleChange}
-        // transitionTime={5000}
-        verticalSwipe
-        width="90%"
-        selectedItem={currentSlide}
+      <Box
+        style={{ position: 'absolute', top: '0', left: '100px' }}
+        w="60%"
+        h="50vh"
       >
-        {steps.map((step, index) => (
-          <Box key={index} style={{ position: 'relative' }} w="60%" h="50vh">
-            <Box pl="80px">
-              <Heading
-                ref={title}
-                textAlign="left"
-                fontSize="48px"
-                mb="50px"
-                style={{ zIndex: '2' }}
-              >
-                {step.title}
-              </Heading>
-              <Text ref={text} textAlign="left">
-                {step.text}
-              </Text>
-            </Box>
-          </Box>
-        ))}
-      </Carousel>
+        <Box>
+          <Heading
+            ref={title}
+            textAlign="left"
+            fontSize="48px"
+            mb="50px"
+            style={{ zIndex: '2' }}
+          >
+            {steps[count].title}
+          </Heading>
+          <Text ref={text} textAlign="left">
+            {steps[count].text}
+          </Text>
+        </Box>
+      </Box>
     </Flex>
   );
 };

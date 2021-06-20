@@ -19,17 +19,20 @@ const Card = ({
       router.replace(href);
     }
   };
+
   return (
     <Flex
       w={width}
       h={height}
-      bg="#4D4DFF"
-      color="#FFF9F2"
+      // bg="#4D4DFF"
+      // color="#FFF9F2"
       direction="column"
       align="flex-start"
       justify="flex-start"
       p={padding}
       borderRadius={borderRadius}
+      boxShadow="lg"
+      my="10px"
       {...rest}
     >
       <Text>{count}</Text>

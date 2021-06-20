@@ -54,18 +54,10 @@ const Blog = ({ posts }) => {
         <Text ref={numberRef} fontSize="10px">
           articole ({posts.length})
         </Text>
-        <Wrap
-          my="50px"
-          spacing="30px"
-          w="900px"
-          direction="row"
-          align="center"
-          justify="center"
-        >
+        <Wrap my="50px" spacing="30px" w="900px">
           {posts?.map((post, index) => {
             return (
               <WrapItem
-                w="900px"
                 key={post.id}
                 ref={(el) => (postRef.current[index] = el)}
               >

@@ -44,9 +44,9 @@ const Header = () => {
           <a>Blog</a>
         </Link>
 
-        <Link href="/blog/add">
+        {/* <Link href="/blog/add">
           <a>Adauga o postare pe blog</a>
-        </Link>
+        </Link> */}
 
         <DarkModeSwitch />
       </div>

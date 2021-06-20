@@ -1,7 +1,7 @@
 import { Flex, Heading, Text, Avatar } from '@chakra-ui/react';
 
-const Testimonial = ({ testimonial }) => {
-  const { name, src, text } = testimonial;
+const Testimonial = ({ item }) => {
+  const { name, src, text } = item;
   return (
     <Flex
       direction="column"

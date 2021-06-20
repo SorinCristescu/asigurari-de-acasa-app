@@ -14,33 +14,32 @@ import {
 
 import { insurances } from '../utils/insurances';
 
-const AsigurareDeTransport = () => {
-  const steps = insurances[5].steps;
+const AsigurarePAD = () => {
+  const steps = insurances[2].steps;
   return (
     <>
       <PageHead
-        title="asigurari de acasa - Asigurare de transport"
-        description="Asigurari de transport"
-        keywords="RCA, rca, asigurari de transport"
+        title="asigurari de acasa - Asigurare PAD"
+        description="Asigurari RCA"
+        keywords="RCA, rca, asigurari RCA"
       />
 
       {/* HERO
     ----------------------*/}
       <Hero
-        title="Asigurare de transport"
-        subtitle="Siguranta marfurilor consolideaza parteneriatele! "
+        title="Asigurare PAD"
+        subtitle="Atat de necesara in cazul dezastrelor naturale!"
       />
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
-          Asigurarea de raspundere a transportatorului, in calitate de caraus,
-          pentru marfurile transportate cu vehicule, vizeaza transporturile
-          rutiere de marfa, cu vehicule inmatriculate in Romania, in baza unor
-          contracte de transport.
+          Aceasta asigurare facultativa vine in completarea asigurarii
+          obligatorii PAD, prin acoperirea mai multor riscuri precum si ca
+          excedent de suma asigurata pe cele 3 riscuri acoperite de PAD.
         </Text>
       </Flex>
-
       {/* STEPS 
     ----------------------*/}
+
       <Steps steps={steps} />
 
       {/* FORM 
@@ -52,4 +51,4 @@ const AsigurareDeTransport = () => {
   );
 };
 
-export default AsigurareDeTransport;
+export default AsigurarePAD;

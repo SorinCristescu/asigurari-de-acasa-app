@@ -1,18 +1,25 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageHead from '../../components/layout/PageHead';
 import { useRouter } from 'next/router';
+import ReactMarkdown from 'react-markdown';
+import MailchimpForm from '../../components/ui/MailchimpForm';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import Moment from 'react-moment';
-import { Flex, Text, Heading, IconButton } from '@chakra-ui/react';
+import { Flex, Text, Heading, IconButton, Center } from '@chakra-ui/react';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 
 const BlogPost = ({ post }) => {
   const { name, image_url, createdAt, text, id } = post;
+  const imageRef = useRef(null);
+  const dateRef = useRef(null);
+  const titleRef = useRef(null);
+  const bodyRef = useRef(null);
+
   const router = useRouter();
   const deleteHandler = async (e) => {
     if (confirm('Are you sure?')) {
@@ -34,9 +41,32 @@ const BlogPost = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    gsap.fromTo(
+      [imageRef.current, titleRef.current, dateRef.current, bodyRef.current],
+      {
+        y: '50px',
+        opacity: 0,
+      },
+      {
+        duration: 1.5,
+        y: '0px',
+        opacity: 1,
+        ease: 'power3.inOut',
+        stagger: {
+          amount: 0.8,
+        },
+      }
+    );
+  }, [imageRef, titleRef, dateRef, bodyRef]);
+
   return (
     <>
-      <PageHead title={`asigurari de acasa - ${post.name}`} />
+      <PageHead
+        title={`asigurari de acasa - ${post.name}`}
+        description={post.description}
+        keywords={post.keywords}
+      />
       <Flex
         pt="100px"
         w="60%"
@@ -57,6 +87,7 @@ const BlogPost = ({ post }) => {
         />
         {post?.image_url && (
           <Image
+            ref={imageRef}
             src={
               image_url
                 ? post.image_url.formats.medium.url
@@ -66,18 +97,14 @@ const BlogPost = ({ post }) => {
             height={600}
           />
         )}
-        <Heading textAlign="center" fontSize="48px" mt="50px">
+        <Heading ref={titleRef} textAlign="center" fontSize="48px" mt="50px">
           {name}
         </Heading>
-        <Text fontSize="12px" mb="50px">
-          <Moment
-            format="YYYY/MM/DD"
-            // fromNow
-          >
-            {createdAt}
-          </Moment>
+        <Text ref={dateRef} fontSize="12px" mb="50px">
+          <Moment format="YYYY/MM/DD">{createdAt}</Moment>
         </Text>
         <Flex
+          ref={bodyRef}
           w="350px"
           h="50px"
           direction="row"
@@ -91,25 +118,28 @@ const BlogPost = ({ post }) => {
                 <FaPencilAlt />
               </a>
             </Link>
-            <Text>Edit post</Text>
+            <Text>Editeaza</Text>
           </Flex>
 
           <Flex h="50px" direction="row" align="center" justify="center">
             <IconButton size="md" variant="ghost" onClick={deleteHandler}>
               <FaTimes />
             </IconButton>
-            <Text ml="10px">Delete post</Text>
+            <Text ml="10px">Sterge</Text>
           </Flex>
         </Flex>
+        <ReactMarkdown>{text}</ReactMarkdown>
 
-        <Text fontSize="18px" mb="50px">
-          {text}
-        </Text>
-        <Link href="/blog">
-          <a>
-            <Text fontSize="24px">{'< '} Back</Text>
-          </a>
-        </Link>
+        <Center w="100%" h="100px">
+          <Link href="/blog">
+            <a>
+              <Text fontSize="24px">{'< '} Back</Text>
+            </a>
+          </Link>
+        </Center>
+        <Center w="100%" h="100vh">
+          <MailchimpForm />
+        </Center>
       </Flex>
     </>
   );

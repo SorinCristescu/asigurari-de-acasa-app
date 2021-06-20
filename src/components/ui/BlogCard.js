@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Flex, Heading, Text, Button } from '@chakra-ui/react';
+import { Flex, Heading, Text, Button, Wrap, WrapItem } from '@chakra-ui/react';
 import Moment from 'react-moment';
 
 const BlogCard = ({ post }) => {
@@ -21,42 +21,44 @@ const BlogCard = ({ post }) => {
       onMouseLeave={() => setIsHover(false)}
       cursor="pointer"
       // m="auto"
-      w="900px"
-      h="150px"
-      direction="row"
-      align="center"
-      justify="center"
+      w="250px"
+      h="350px"
+      direction="column"
+      align="flex-start"
+      justify="flex-start"
+      bg={isHover && '#4D4DFF'}
+      color={isHover && '#FFFFFF'}
+      boxShadow="lg"
     >
       <Image
         src={
           image_url ? image_url.formats.thumbnail.url : '/images/default.jpg'
         }
         alt="Post thumbnail"
-        width={200}
+        width={250}
         height={150}
       />
       <Flex
         // bg={isHover ? '#4D4DFF' : 'transparent'}
 
         w="100%"
-        h="150px"
+        h="200px"
         direction="column"
         align="flex-start"
-        justify="flex-start"
-        p="20px"
+        justify="space-between"
       >
         <Heading
-          color={isHover && '#4D4DFF'}
-          fontSize="24px"
+          // color={isHover && '#4D4DFF'}
+          fontSize="20px"
           textAlign="left"
-          mb="10px"
+          m="10px"
         >
           {name}
         </Heading>
-        <Text fontSize="16px" textAlign="left" mb="10px">
+        <Text fontSize="16px" textAlign="left" m="10px">
           {description}
         </Text>
-        <Text fontSize="12px" textAlign="left">
+        <Text fontSize="12px" textAlign="left" m="10px">
           <Moment
             format="YYYY/MM/DD"
             // fromNow

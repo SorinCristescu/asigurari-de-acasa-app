@@ -21,8 +21,13 @@ export const styles = {
       outline: 'none !important',
     },
     a: {
-      color: props.colorMode === 'light' ? '#0D0D0D' : '#FFF9F2',
       marginRight: '30px',
+    },
+    ul: {
+      padding: '20px 0',
+    },
+    li: {
+      padding: '0 0 0 10px',
     },
   }),
 };
