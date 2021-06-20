@@ -13,64 +13,90 @@ const Blog = ({ posts }) => {
   const postRef = useRef([]);
 
   useEffect(() => {
-    gsap.fromTo(
-      [
-        titleRef.current,
-        subtitleRef.current,
-        numberRef.current,
-        postRef.current,
-      ],
-      {
-        y: '50px',
-        opacity: 0,
-      },
-      {
-        duration: 1.5,
-        y: '0px',
-        opacity: 1,
-        ease: 'power3.inOut',
-        stagger: {
-          amount: 0.8,
+    if (posts && posts.length !== 0) {
+      gsap.fromTo(
+        [
+          titleRef.current,
+          subtitleRef.current,
+          numberRef.current,
+          postRef.current,
+        ],
+        {
+          y: '50px',
+          opacity: 0,
         },
-      }
-    );
+        {
+          duration: 1.5,
+          y: '0px',
+          opacity: 1,
+          ease: 'power3.inOut',
+          stagger: {
+            amount: 0.8,
+          },
+        }
+      );
+    }
   }, [titleRef, subtitleRef, numberRef, postRef]);
+
   return (
     <>
       <PageHead title="asigurari de acasa - Blog" />
-      <Flex
-        w="100%"
-        pt="150px"
-        direction="column"
-        align="center"
-        justify="center"
-      >
-        <Heading ref={titleRef} as="h1" fontSize="100px" mb="50px">
-          Blog
-        </Heading>
-        <Text ref={subtitleRef} fontSize="24px">
-          In lumea asigurarilor
-        </Text>
-        <Text ref={numberRef} fontSize="10px">
-          articole ({posts.length})
-        </Text>
-        <Wrap my="50px" spacing="30px" w="900px">
-          {posts?.map((post, index) => {
-            return (
-              <WrapItem
-                key={post.id}
-                ref={(el) => (postRef.current[index] = el)}
-              >
-                <Link href={`/blog/${post.slug}`}>
-                  <a>
-                    <BlogCard post={post} />
-                  </a>
-                </Link>
-              </WrapItem>
-            );
-          })}
-        </Wrap>
-      </Flex>
+      {posts && posts.length !== 0 ? (
+        <Flex
+          w="100%"
+          pt="150px"
+          direction="column"
+          align="center"
+          justify="center"
+        >
+          <Heading ref={titleRef} as="h1" fontSize="100px" mb="50px">
+            Blog
+          </Heading>
+          <Text ref={subtitleRef} fontSize="24px">
+            In lumea asigurarilor
+          </Text>
+          <Text ref={numberRef} fontSize="10px">
+            articole ({posts.length})
+          </Text>
+          <Wrap my="50px" spacing="30px" w="900px">
+            {posts?.map((post, index) => {
+              return (
+                <WrapItem
+                  key={post.id}
+                  ref={(el) => (postRef.current[index] = el)}
+                >
+                  <Link href={`/blog/${post.slug}`}>
+                    <a>
+                      <BlogCard post={post} />
+                    </a>
+                  </Link>
+                </WrapItem>
+              );
+            })}
+          </Wrap>
+        </Flex>
+      ) : (
+        <Flex
+          w="100%"
+          pt="150px"
+          direction="column"
+          align="center"
+          justify="center"
+        >
+          <Heading ref={titleRef} as="h1" fontSize="100px" mb="50px">
+            Blog
+          </Heading>
+          <Text ref={subtitleRef} fontSize="24px">
+            In lumea asigurarilor
+          </Text>
+          <Text ref={numberRef} fontSize="10px">
+            articole ({posts.length})
+          </Text>
+          <Text fontSize="24px" mt="100px">
+            Nu a fost gasita nici o postare momentan!
+          </Text>
+        </Flex>
+      )}
     </>
   );
 };

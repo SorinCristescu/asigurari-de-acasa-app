@@ -14,8 +14,6 @@ import { Flex, Text, Heading, IconButton, Center } from '@chakra-ui/react';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 
 const BlogPost = ({ post }) => {
-  const { name, image_url, createdAt, text, id } = post;
-
   const router = useRouter();
   const deleteHandler = async (e) => {
     if (confirm('Are you sure?')) {
@@ -40,9 +38,9 @@ const BlogPost = ({ post }) => {
   return (
     <>
       <PageHead
-        title={`asigurari de acasa - ${post.name}`}
-        description={post.description}
-        keywords={post.keywords}
+        title={`asigurari de acasa - ${post.name ? post.name : ''}`}
+        description={post.description ? post.description : ''}
+        keywords={post.keywords ? post.keywords : ''}
       />
       <Flex
         pt="100px"
@@ -62,22 +60,23 @@ const BlogPost = ({ post }) => {
           draggable
           pauseOnHover
         />
-        {post?.image_url && (
-          <Image
-            src={
-              image_url
-                ? post.image_url.formats.medium.url
-                : '/images/default.jpg'
-            }
-            width={960}
-            height={600}
-          />
-        )}
+        <Image
+          src={
+            post.image_url
+              ? post.image_url.formats.medium.url
+              : '/images/default.jpg'
+          }
+          width={960}
+          height={600}
+        />
+
         <Heading textAlign="center" fontSize="48px" mt="50px">
-          {name}
+          {post.name ? post.name : ''}
         </Heading>
         <Text fontSize="12px" mb="50px">
-          <Moment format="YYYY/MM/DD">{createdAt}</Moment>
+          <Moment format="YYYY/MM/DD">
+            {post.createdAt ? post.createdAt : ''}
+          </Moment>
         </Text>
         <Flex
           w="350px"
@@ -88,7 +87,7 @@ const BlogPost = ({ post }) => {
           mb="50px"
         >
           <Flex h="50px" direction="row" align="center" justify="flex-start">
-            <Link href={`/blog/edit/${id}`}>
+            <Link href={`/blog/edit/${post.id}`}>
               <a>
                 <FaPencilAlt />
               </a>
@@ -103,8 +102,14 @@ const BlogPost = ({ post }) => {
             <Text ml="10px">Sterge</Text>
           </Flex>
         </Flex>
-        <ReactMarkdown>{text}</ReactMarkdown>
-
+        <Flex
+          direction="column"
+          // align="flex-start"
+          // justify="space-between"
+          textAlign="left"
+        >
+          <ReactMarkdown>{post.text ? post.text : ''}</ReactMarkdown>
+        </Flex>
         <Center w="100%" h="100px">
           <Link href="/blog">
             <a>
