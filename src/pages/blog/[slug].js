@@ -157,7 +157,9 @@ export default BlogPost;
 // }
 
 export async function getServerSideProps({ query: { slug } }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts/${slug}`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/posts?slug=${slug}`
+  );
   const posts = await res.json();
 
   return {
