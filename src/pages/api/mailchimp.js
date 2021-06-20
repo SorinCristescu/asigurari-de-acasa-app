@@ -2,7 +2,7 @@ const handler = async (req, res) => {
   const method = req.method;
   if (method === 'POST') {
     const { name, email, message, phone } = req.body;
-
+    console.log('body', req.body);
     const API_KEY = process.env.MAILCHIMP_API_KEY;
     const LIST_ID = process.env.MAILCHIMP_LIST_ID;
     const DATACENTER = process.env.MAILCHIMP_API_KEY.split('-')[1];
@@ -24,6 +24,7 @@ const handler = async (req, res) => {
       return res.status(400).json({ message: 'Forgot to add your message!' });
     }
     const data = await fetch(url, {
+      mode: 'no-cors',
       method: 'POST',
       body: JSON.stringify({
         NAME: name,
@@ -34,11 +35,11 @@ const handler = async (req, res) => {
       }),
       headers: {
         'Content-Type': 'application/',
-        Authorization: `apikey ${base64ApiKey}`,
+        Authorization: `Basic ${base64ApiKey}`,
         'Access-Control-Allow-Origin': '*',
       },
     });
-
+    console.log('data', data);
     return res.status(201).json({ message: 'Sucess' });
   }
 };

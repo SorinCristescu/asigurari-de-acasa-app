@@ -13,16 +13,16 @@ const FormContainer = () => {
     email: '',
     phone: '',
     message: '',
-    insurance: '',
+    // insurance: '',
   };
   const validationSchema = Yup.object({
     name: Yup.string().required('Numele este obligatoriu!'),
-    insurance: Yup.string().required('Alege un tip de asigurare dorit!'),
+    // insurance: Yup.string().required('Alege un tip de asigurare dorit!'),
     email: Yup.string()
       .email('Adresa de email nu are formatul corect!')
       .required('Adresa de email este obligatorie!'),
     phone: Yup.string().required('Numarul de telefon este obligatoriu!'),
-    message: Yup.string().required('Mesajul este obligatoriu!'),
+    message: Yup.string(),
   });
 
   const onSubmit = async (values, onSubmitProps) => {
