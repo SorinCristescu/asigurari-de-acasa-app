@@ -74,11 +74,13 @@ const BlogPost = ({ post }) => {
           {post.name ? post.name : ''}
         </Heading>
         <Text fontSize="12px" mb="50px">
-          <Moment format="YYYY/MM/DD">
-            {post.createdAt ? post.createdAt : ''}
-          </Moment>
+          {post.createdAt ? (
+            <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
+          ) : (
+            ''
+          )}
         </Text>
-        <Flex
+        {/* <Flex
           w="350px"
           h="50px"
           direction="row"
@@ -101,7 +103,7 @@ const BlogPost = ({ post }) => {
             </IconButton>
             <Text ml="10px">Sterge</Text>
           </Flex>
-        </Flex>
+        </Flex> */}
         <Flex
           direction="column"
           // align="flex-start"
