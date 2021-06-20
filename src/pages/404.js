@@ -1,13 +1,5 @@
-import { useRouter } from 'next/link';
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { Flex, Button } from '@chakra-ui/react';
 import styles from '../css/404.module.css';
 
 const NotFound = () => {
