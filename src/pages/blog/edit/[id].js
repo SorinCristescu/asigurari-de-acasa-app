@@ -70,7 +70,6 @@ const EditBlogPost = ({ post }) => {
     formData.append('refId', post.id);
     formData.append('field', 'image');
 
-    console.log('form data', formData);
     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/upload`, {
       method: 'POST',
       body: formData,
@@ -78,7 +77,6 @@ const EditBlogPost = ({ post }) => {
     });
 
     if (res.ok) {
-      console.log('res ok');
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${post.id}`
       );

@@ -22,7 +22,6 @@ const Select = ({
     setLink(e.target.value);
   };
 
-  // console.log('link', link);
   return (
     <ChakraSelect
       width={width}

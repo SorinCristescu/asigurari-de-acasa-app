@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageHead from '../../components/layout/PageHead';
@@ -15,10 +15,6 @@ import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 
 const BlogPost = ({ post }) => {
   const { name, image_url, createdAt, text, id } = post;
-  const imageRef = useRef(null);
-  const dateRef = useRef(null);
-  const titleRef = useRef(null);
-  const bodyRef = useRef(null);
 
   const router = useRouter();
   const deleteHandler = async (e) => {
@@ -40,25 +36,6 @@ const BlogPost = ({ post }) => {
       }
     }
   };
-
-  useEffect(() => {
-    gsap.fromTo(
-      [imageRef.current, titleRef.current, dateRef.current, bodyRef.current],
-      {
-        y: '50px',
-        opacity: 0,
-      },
-      {
-        duration: 1.5,
-        y: '0px',
-        opacity: 1,
-        ease: 'power3.inOut',
-        stagger: {
-          amount: 0.8,
-        },
-      }
-    );
-  }, [imageRef, titleRef, dateRef, bodyRef]);
 
   return (
     <>
@@ -87,7 +64,6 @@ const BlogPost = ({ post }) => {
         />
         {post?.image_url && (
           <Image
-            ref={imageRef}
             src={
               image_url
                 ? post.image_url.formats.medium.url
@@ -97,14 +73,13 @@ const BlogPost = ({ post }) => {
             height={600}
           />
         )}
-        <Heading ref={titleRef} textAlign="center" fontSize="48px" mt="50px">
+        <Heading textAlign="center" fontSize="48px" mt="50px">
           {name}
         </Heading>
-        <Text ref={dateRef} fontSize="12px" mb="50px">
+        <Text fontSize="12px" mb="50px">
           <Moment format="YYYY/MM/DD">{createdAt}</Moment>
         </Text>
         <Flex
-          ref={bodyRef}
           w="350px"
           h="50px"
           direction="row"

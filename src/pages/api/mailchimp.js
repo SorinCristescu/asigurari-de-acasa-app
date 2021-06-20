@@ -38,7 +38,6 @@ const handler = async (req, res) => {
         'Access-Control-Allow-Origin': '*',
       },
     });
-    console.log('data', data);
 
     return res.status(201).json({ message: 'Sucess' });
   }

@@ -31,7 +31,7 @@ const AddBlogPost = () => {
       },
       body: JSON.stringify(values),
     });
-    console.log(values);
+
     if (!res.ok) {
       toast.error('Ceva nu a functionat corect!');
     } else {

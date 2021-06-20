@@ -36,7 +36,7 @@ const Hero = ({ title, subtitle }) => {
       }
     );
   }, [titleRef, subtitleRef, ctaRef]);
-  console.log('router', router);
+
   return (
     <Flex
       direction="row"

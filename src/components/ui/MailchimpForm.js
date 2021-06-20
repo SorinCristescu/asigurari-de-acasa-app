@@ -26,7 +26,6 @@ const FormContainer = () => {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    console.log(values);
     const res = await fetch('/api/mailchimp', {
       method: 'POST',
       body: JSON.stringify(values),

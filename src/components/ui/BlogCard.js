@@ -7,7 +7,6 @@ import Moment from 'react-moment';
 
 const BlogCard = ({ post }) => {
   const { id, name, slug, createdAt, description, image_url, user } = post;
-  console.log('post', post);
   const [isHover, setIsHover] = useState(false);
   const router = useRouter();
   const redirectHandler = () => {
