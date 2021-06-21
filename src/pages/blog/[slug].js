@@ -161,7 +161,6 @@ export async function getServerSideProps({ query: { slug } }) {
   return {
     props: {
       post: posts[0],
-      revalidate: 1,
     },
   };
 }

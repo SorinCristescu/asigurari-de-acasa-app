@@ -103,14 +103,13 @@ const Blog = ({ posts }) => {
 
 export default Blog;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
   const posts = await res.json();
 
   return {
     props: {
       posts,
-      revalidate: 1,
     },
   };
 }
