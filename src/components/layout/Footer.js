@@ -66,9 +66,6 @@ const Footer = () => {
           <Link href="/asigurare-de-transport">
             <a>Asigurare de transport</a>
           </Link>
-          <Link href="/">
-            <a>Asigurare de calatorie</a>
-          </Link>
           <Link href="/asigurare-pad">
             <a>Asigurare PAD</a>
           </Link>

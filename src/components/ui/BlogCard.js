@@ -51,7 +51,7 @@ const BlogCard = ({ post }) => {
           {description ? description : ''}
         </Text>
         <Text fontSize="12px" textAlign="left" m="10px">
-          <Moment format="YYYY/MM/DD">{createdAt ? createdAt : ''}</Moment>
+          <Moment format="YYYY/MM/DD">{createdAt}</Moment>
         </Text>
       </Flex>
     </Flex>

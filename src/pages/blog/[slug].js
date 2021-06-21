@@ -72,12 +72,8 @@ const BlogPost = ({ post }) => {
         <Heading textAlign="center" fontSize="48px" mt="50px">
           {post.name ? post.name : ''}
         </Heading>
-        <Text fontSize="12px" mb="50px">
-          {post.createdAt ? (
-            <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
-          ) : (
-            ''
-          )}
+        <Text fontSize="12px" my="30px">
+          <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
         </Text>
         {/* <Flex
           w="350px"

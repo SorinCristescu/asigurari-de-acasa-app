@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 
 import Input from './Input';
 import TextArea from './TextArea';
-import Select from './Select';
+// import Select from './Select';
 import { Button, Heading, Text } from '@chakra-ui/react';
 import { insurances } from '../../utils/insurances';
 
@@ -13,7 +13,7 @@ const FormContainer = () => {
     email: '',
     phone: '',
     message: '',
-    // insurance: '',
+    insuranceType: '',
   };
   const validationSchema = Yup.object({
     name: Yup.string().required('Numele este obligatoriu!'),
@@ -23,9 +23,13 @@ const FormContainer = () => {
       .required('Adresa de email este obligatorie!'),
     phone: Yup.string().required('Numarul de telefon este obligatoriu!'),
     message: Yup.string(),
+    insuranceType: Yup.string().required(
+      'Tipul de asigurare este obligatorie!'
+    ),
   });
 
   const onSubmit = async (values, onSubmitProps) => {
+    console.log('form', values);
     const res = await fetch('/api/mailchimp', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -55,6 +59,7 @@ const FormContainer = () => {
         isSubmitting,
         setSubmitting,
         resetForm,
+        handleChange,
       }) => (
         <Form style={{ width: '400px' }}>
           <div
@@ -67,13 +72,15 @@ const FormContainer = () => {
             <Heading as="h4" size="md">
               Doresc
             </Heading>
-            <Select
+            {/* <Select
               options={insurances}
               fontSize="20px"
               fontWeight="bold"
               width="400px"
-              name="insurance"
-            />
+              name="insuranceType"
+              value={values.insuranceType}
+              onChange={handleChange}
+            /> */}
           </div>
 
           <Input type="text" label="Nume / Denumire firma" name="name" />
