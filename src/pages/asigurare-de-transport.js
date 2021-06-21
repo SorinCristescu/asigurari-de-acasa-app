@@ -11,6 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import Transport from '../svg/transport.svg';
 
 import { insurances } from '../utils/insurances';
 
@@ -29,7 +30,9 @@ const AsigurareDeTransport = () => {
       <Hero
         title="Asigurare de transport"
         subtitle="Siguranta marfurilor consolideaza parteneriatele! "
-      />
+      >
+        <Transport />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Asigurarea de raspundere a transportatorului, in calitate de caraus,

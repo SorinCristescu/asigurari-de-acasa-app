@@ -2,6 +2,7 @@ import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
+import RCA from '../svg/rca.svg';
 
 import {
   Flex,
@@ -30,7 +31,9 @@ const AsigurareRCA = ({ SEO }) => {
       <Hero
         title="Asigurare RCA"
         subtitle="Ofera suport in cazul incidentelor auto!"
-      />
+      >
+        <RCA />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Polita de Asigurarea de Răspundere Civilă Auto (RCA) este practic un

@@ -18,6 +18,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import HeroImage from '../svg/hero.svg';
 import { insurances } from '../utils/insurances';
 import { partners } from '../utils/partners';
 import { testimonials } from '../utils/testimonials';
@@ -30,7 +31,9 @@ const Index = () => {
       <Hero
         title="Se poate si altfel!"
         subtitle="Noi o spunem dar o si demonstram, tu doar trebuie sa fi deschis in a afla cum."
-      />
+      >
+        <HeroImage />
+      </Hero>
 
       {/* INSURANCES TYPES
     ----------------------*/}

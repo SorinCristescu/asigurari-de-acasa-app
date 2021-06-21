@@ -11,6 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import PAD from '../svg/pad.svg';
 
 import { insurances } from '../utils/insurances';
 
@@ -29,7 +30,9 @@ const AsigurarePAD = () => {
       <Hero
         title="Asigurare PAD"
         subtitle="Atat de necesara in cazul dezastrelor naturale!"
-      />
+      >
+        <PAD />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           PAD este polita de asigurare impotriva dezastrelor naturale, o polita

@@ -29,5 +29,8 @@
     "react-toastify": "^7.0.4",
     "yup": "^0.32.9"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-inline-react-svg": "^2.0.1"
+  }
 }

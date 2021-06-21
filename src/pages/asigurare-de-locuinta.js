@@ -11,7 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
-
+import Locuinta from '../svg/locuinta.svg';
 import { insurances } from '../utils/insurances';
 
 const AsigurareDeLocuinta = () => {
@@ -29,7 +29,9 @@ const AsigurareDeLocuinta = () => {
       <Hero
         title="Asigurare de locuinta"
         subtitle="O mica investitie, un mare avantaj!"
-      />
+      >
+        <Locuinta />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Aceasta asigurare facultativa vine in completarea asigurarii

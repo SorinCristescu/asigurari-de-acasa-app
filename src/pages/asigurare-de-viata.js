@@ -11,6 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import Life from '../svg/life.svg';
 
 import { insurances } from '../utils/insurances';
 
@@ -29,7 +30,9 @@ const AsigurareDeViata = () => {
       <Hero
         title="Asigurare de viata"
         subtitle="Protectie si satisfactii financiare!"
-      />
+      >
+        <Life />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Numita generic „asigurare de viată”, acest tip de instrument financiar

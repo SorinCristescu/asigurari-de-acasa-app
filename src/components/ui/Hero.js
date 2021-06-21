@@ -12,15 +12,16 @@ import {
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
-const Hero = ({ title, subtitle }) => {
+const Hero = ({ title, subtitle, children }) => {
   const router = useRouter();
   const subtitleRef = useRef(null);
   const titleRef = useRef(null);
   const ctaRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
-      [titleRef.current, subtitleRef.current, ctaRef.current],
+      [titleRef.current, subtitleRef.current, ctaRef.current, imageRef.current],
       {
         y: '20px',
         opacity: 0,
@@ -35,7 +36,7 @@ const Hero = ({ title, subtitle }) => {
         },
       }
     );
-  }, [titleRef, subtitleRef, ctaRef]);
+  }, [titleRef, subtitleRef, ctaRef, imageRef]);
 
   return (
     <Flex
@@ -76,7 +77,9 @@ const Hero = ({ title, subtitle }) => {
           Solicita oferta
         </Button>
       </Box>
-      <Box w="50%"></Box>
+      <Center ref={imageRef} w="50%">
+        {children}
+      </Center>
     </Flex>
   );
 };

@@ -11,7 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
-
+import Accidente from '../svg/accidente.svg';
 import { insurances } from '../utils/insurances';
 
 const AsigurareDeAccidente = () => {
@@ -29,7 +29,9 @@ const AsigurareDeAccidente = () => {
       <Hero
         title="Asigurare de accidente"
         subtitle="Imprevizibilul poate fi compensat!"
-      />
+      >
+        <Accidente />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Poate fi incheiata atat de persoane fizice cat si de persoane

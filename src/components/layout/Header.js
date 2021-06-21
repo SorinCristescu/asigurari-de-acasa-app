@@ -38,7 +38,7 @@ const Header = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Dropdown links={insurances} />
+        <Dropdown links={insurances} isDark={isDark} />
 
         <Link href="/despre">
           <a>Despre noi</a>

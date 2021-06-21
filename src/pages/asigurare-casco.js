@@ -11,7 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
-
+import CASCO from '../svg/casco.svg';
 import { insurances } from '../utils/insurances';
 
 const AsigurareCASCO = () => {
@@ -29,7 +29,9 @@ const AsigurareCASCO = () => {
       <Hero
         title="Asigurare CASCO"
         subtitle="Tine departe cheltuielile si stresul de masina ta!"
-      />
+      >
+        <CASCO />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           CASCO este o asigurare facultativa, in baza careia compania de

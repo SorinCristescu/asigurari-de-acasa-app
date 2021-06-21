@@ -11,6 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
+import Sanatate from '../svg/sanatate.svg';
 
 import { insurances } from '../utils/insurances';
 
@@ -26,7 +27,9 @@ const AsigurareDeSanatate = () => {
 
       {/* HERO
     ----------------------*/}
-      <Hero title="Asigurare de sanatate" subtitle="Te mentine sanatos!" />
+      <Hero title="Asigurare de sanatate" subtitle="Te mentine sanatos!">
+        <Sanatate />
+      </Hero>
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
           Asigurarea de sănătate are drept scop compensarea integrala sau

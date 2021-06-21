@@ -8,7 +8,6 @@ const DarkModeSwitch = () => {
     <IconButton
       onClick={toggleColorMode}
       variant="ghost"
-      colorScheme="#4D4DFF"
       fontSize="15px"
       isRound
     >

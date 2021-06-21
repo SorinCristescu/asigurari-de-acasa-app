@@ -11,7 +11,7 @@ import {
   Box,
   Button,
 } from '@chakra-ui/react';
-
+import About from '../svg/about.svg';
 import { values } from '../utils/values';
 
 const Despre = () => {
@@ -23,7 +23,9 @@ const Despre = () => {
       <Hero
         title="Asigurari dedicate tie"
         subtitle="Te asiguram că vei obtine cea mai bună oferta care tine cont de nevoile tale, si care se preteaza cel mai bine stilului tău de viată."
-      />
+      >
+        <About />
+      </Hero>
 
       <Flex
         pt="100px"
