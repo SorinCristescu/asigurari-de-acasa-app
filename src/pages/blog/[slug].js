@@ -3,6 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import PageHead from '../../components/layout/PageHead';
 import { useRouter } from 'next/router';
 import ReactMarkdown from 'react-markdown';
+import Markdown from 'markdown-to-jsx';
+
 import MailchimpForm from '../../components/ui/MailchimpForm';
 
 import Link from 'next/link';
@@ -11,9 +13,21 @@ import Moment from 'react-moment';
 import { Flex, Text, Heading, IconButton, Center } from '@chakra-ui/react';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa';
 
+const Header = ({ children, ...props }) => (
+  <Heading my="20px" {...props}>
+    {children}
+  </Heading>
+);
+
+const Paragraph = ({ children, ...props }) => (
+  <Text my="20px" {...props}>
+    {children}
+  </Text>
+);
+
 const BlogPost = ({ post }) => {
   const router = useRouter();
-
+  console.log('post', post);
   const deleteHandler = async (e) => {
     if (confirm('Are you sure?')) {
       const res = await fetch(
@@ -105,7 +119,27 @@ const BlogPost = ({ post }) => {
           // justify="space-between"
           textAlign="left"
         >
-          <ReactMarkdown>{post.text ? post.text : ''}</ReactMarkdown>
+          <Markdown
+            options={{
+              forceBlock: true,
+              overrides: {
+                h1: {
+                  component: Header,
+                  props: {
+                    className: 'foo',
+                  },
+                },
+                p: {
+                  component: Paragraph,
+                  props: {
+                    className: 'foo',
+                  },
+                },
+              },
+            }}
+          >
+            {post.text ? post.text : ''}
+          </Markdown>
         </Flex>
         <Center w="100%" h="100px">
           <Link href="/blog">
@@ -123,34 +157,6 @@ const BlogPost = ({ post }) => {
 };
 
 export default BlogPost;
-
-// export async function getStaticPaths() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`);
-//   const posts = await res.json();
-//   const paths = posts.map((post) => ({
-//     params: {
-//       slug: post.slug,
-//     },
-//   }));
-//   return {
-//     paths,
-//     fallback: true,
-//   };
-// }
-
-// export async function getStaticProps({ params: { slug } }) {
-//   const res = await fetch(
-//     `${process.env.NEXT_PUBLIC_BASE_URL}/posts?slug=${slug}`
-//   );
-//   const posts = await res.json();
-
-//   return {
-//     props: {
-//       post: posts[0],
-//       revalidate: 1,
-//     },
-//   };
-// }
 
 export async function getServerSideProps({ query: { slug } }) {
   const res = await fetch(
