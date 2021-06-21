@@ -32,9 +32,10 @@ const AsigurarePAD = () => {
       />
       <Flex width="100%" align="center" justify="flex-start">
         <Text mb="50px" width="50%">
-          Aceasta asigurare facultativa vine in completarea asigurarii
-          obligatorii PAD, prin acoperirea mai multor riscuri precum si ca
-          excedent de suma asigurata pe cele 3 riscuri acoperite de PAD.
+          PAD este polita de asigurare impotriva dezastrelor naturale, o polita
+          de asigurare obligatorie care acopera daunele produse de cutremure,
+          inundatii sau alunecari de teren ca fenomene naturale asupra
+          locuintelor.
         </Text>
       </Flex>
       {/* STEPS 

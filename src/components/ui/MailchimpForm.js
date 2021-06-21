@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 
 import Input from './Input';
 import TextArea from './TextArea';
-// import Select from './Select';
+import Select from './Select';
 import { Button, Heading, Text } from '@chakra-ui/react';
 import { insurances } from '../../utils/insurances';
 
@@ -29,7 +29,6 @@ const FormContainer = () => {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    console.log('form', values);
     const res = await fetch('/api/mailchimp', {
       method: 'POST',
       body: JSON.stringify(values),
@@ -72,15 +71,16 @@ const FormContainer = () => {
             <Heading as="h4" size="md">
               Doresc
             </Heading>
-            {/* <Select
+            <Select
               options={insurances}
               fontSize="20px"
               fontWeight="bold"
-              width="400px"
+              width="340px"
+              cursor="pointer"
               name="insuranceType"
               value={values.insuranceType}
               onChange={handleChange}
-            /> */}
+            />
           </div>
 
           <Input type="text" label="Nume / Denumire firma" name="name" />

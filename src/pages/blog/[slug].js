@@ -2,7 +2,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PageHead from '../../components/layout/PageHead';
 import { useRouter } from 'next/router';
-import ReactMarkdown from 'react-markdown';
 import Markdown from 'markdown-to-jsx';
 
 import MailchimpForm from '../../components/ui/MailchimpForm';

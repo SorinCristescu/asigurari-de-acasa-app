@@ -3,11 +3,14 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import DarkModeSwitch from './DarkModeSwitch';
 import Logo from '../ui/Logo';
-import Select from '../ui/Select';
+import { useColorMode } from '@chakra-ui/react';
+
 import { Select as ChakraSelect, FormControl, Text } from '@chakra-ui/react';
 import { insurances } from '../../utils/insurances';
 
 const Header = () => {
+  const { colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   const [link, setLink] = useState('');
   const router = useRouter();
 
@@ -25,10 +28,14 @@ const Header = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         position: 'fixed',
+
         height: '100px',
         width: '100%',
         padding: '0 100px',
-        zIndex: 1000,
+        zIndex: 10000,
+        background: `linear-gradient(180deg, ${
+          isDark ? '#171923' : '#FBFBFB '
+        } 73.96%, rgba(251, 251, 251, 0) 100%)`,
       }}
     >
       <Link href="/">
@@ -62,7 +69,7 @@ const Header = () => {
         >
           {insurances.map((option, index) => (
             <option key={index} value={option.value}>
-              <Text>{option.title}</Text>
+              {option.title}
             </option>
           ))}
         </ChakraSelect>

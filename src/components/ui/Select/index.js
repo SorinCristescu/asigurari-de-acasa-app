@@ -26,16 +26,15 @@ const Select = ({
               variant="unstyled"
               fontSize={fontSize}
               fontWeight={fontWeight}
-              // onClick={handleLink}
-              onChange={isLink ? handleLink : onChange}
+              onChange={onChange}
               value={value}
               id={name}
               {...rest}
               {...field}
             >
-              {options.map((option, index) => (
-                <option key={index} value={option.value}>
-                  <Text>{option.title}</Text>
+              {options.map((option) => (
+                <option key={option.count} value={option.value}>
+                  {option.title}
                 </option>
               ))}
             </ChakraSelect>

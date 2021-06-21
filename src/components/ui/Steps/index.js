@@ -28,7 +28,7 @@ const Steps = ({ steps }) => {
       // if (count === 0) {
       next();
       // }
-    }, 6500);
+    }, 13500);
     return () => {
       clearInterval(timer.current);
     };
@@ -41,7 +41,7 @@ const Steps = ({ steps }) => {
         height: '50px',
       },
       {
-        duration: 5,
+        duration: 12,
         height: '232px',
         ease: 'power1.inOut',
       }

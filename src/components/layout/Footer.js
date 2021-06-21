@@ -34,7 +34,7 @@ const Footer = () => {
           <Link href="/blog">
             <a>Blog</a>
           </Link>
-          <Link href="/">
+          <Link href="/faq">
             <a>FAQ</a>
           </Link>
           <Link href="/termeni-de-utilizare">
@@ -43,9 +43,10 @@ const Footer = () => {
           <Link href="/politica-de-confidentialitate">
             <a>Politica de confidentialitate</a>
           </Link>
-          <Link href="/">
-            <a>ANPC</a>
-          </Link>
+
+          <a href="https://anpc.ro/" target="_blank" rel="noopener">
+            ANPC
+          </a>
         </Flex>
         <Flex
           width="50%"
