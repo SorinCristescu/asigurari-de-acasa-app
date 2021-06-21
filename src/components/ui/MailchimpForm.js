@@ -93,6 +93,8 @@ const FormContainer = () => {
             variant="solid"
             borderRadius="0"
             bg="#4D4DFF"
+            _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
+            // _focus={{ bg: '#4D4DFF' }}
             color="#FFF9F2"
             // colorScheme="red"
             type="submit"
