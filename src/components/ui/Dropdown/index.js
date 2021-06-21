@@ -12,9 +12,11 @@ const Dropdown = ({ links }) => {
         as={Button}
         borderRadius="0"
         mx="30px"
-        variant="ghost"
-        _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-        _expanded={{ bg: '#4D4DFF', color: '#FFF9F2' }}
+        variant="link"
+        color="#0D0D0D"
+        fontWeight="bold"
+        _hover={{ color: '#3333FF' }}
+        _expanded={{ color: '#3333FF' }}
         // _focus={{ bg: '#4D4DFF' }}
         rightIcon={<FaAngleDown />}
         onClick={() => setIsOpen(!isOpen)}

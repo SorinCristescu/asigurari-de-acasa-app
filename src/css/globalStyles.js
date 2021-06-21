@@ -22,6 +22,12 @@ export const styles = {
     },
     a: {
       marginRight: '30px',
+      fontWeight: 'bold',
+      textDecoration: 'none',
+    },
+
+    'a:hover': {
+      color: '#3333FF',
     },
     ul: {
       padding: '20px 0',
