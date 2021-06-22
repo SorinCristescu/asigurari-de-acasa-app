@@ -2,8 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import PageHead from '../../components/layout/PageHead';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Flex, Text, Heading, Button, Wrap, WrapItem } from '@chakra-ui/react';
+import { Flex, Text, Heading, Wrap, WrapItem } from '@chakra-ui/react';
 import BlogCard from '../../components/ui/BlogCard';
 
 const Blog = ({ posts }) => {
@@ -50,11 +49,8 @@ const Blog = ({ posts }) => {
           justify="center"
         >
           <Heading ref={titleRef} as="h1" fontSize="100px" mb="50px">
-            Blog
+            Din lumea asigurarilor
           </Heading>
-          <Text ref={subtitleRef} fontSize="24px">
-            In lumea asigurarilor
-          </Text>
           <Text ref={numberRef} fontSize="10px">
             articole ({posts.length})
           </Text>
@@ -65,11 +61,7 @@ const Blog = ({ posts }) => {
                   key={post.id}
                   ref={(el) => (postRef.current[index] = el)}
                 >
-                  <Link href={`/blog/${post.slug}`}>
-                    <a>
-                      <BlogCard post={post} />
-                    </a>
-                  </Link>
+                  <BlogCard post={post} />
                 </WrapItem>
               );
             })}

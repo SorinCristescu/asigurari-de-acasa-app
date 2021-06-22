@@ -1,13 +1,10 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { useColorMode } from '@chakra-ui/react';
 import { Flex, Text, Heading, Box, IconButton } from '@chakra-ui/react';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 import classes from './Steps.module.css';
 
 const Steps = ({ steps }) => {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
   const arrow = useRef(null);
   const title = useRef(null);
   const text = useRef(null);
@@ -107,14 +104,14 @@ const Steps = ({ steps }) => {
         <IconButton
           onClick={prev}
           variant="ghost"
-          fontSize="20px"
+          color="#808080"
           isRound
           icon={<FaLongArrowAltUp />}
         />
         <IconButton
           onClick={next}
           variant="ghost"
-          fontSize="20px"
+          color="#808080"
           isRound
           icon={<FaLongArrowAltDown />}
         />

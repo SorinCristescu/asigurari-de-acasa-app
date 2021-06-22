@@ -22,8 +22,11 @@ export const styles = {
     },
     a: {
       marginRight: '30px',
+      fontSize: '16px',
       fontWeight: 'bold',
       textDecoration: 'none',
+      display: 'flex',
+      alignItems: 'center',
     },
 
     'a:hover': {
@@ -34,6 +37,11 @@ export const styles = {
     },
     li: {
       padding: '0 0 0 10px',
+    },
+    p: {
+      fontSize: '16px',
+      fontWeight: 'semibold',
+      color: '#808080',
     },
   }),
 };

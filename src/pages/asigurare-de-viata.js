@@ -34,7 +34,7 @@ const AsigurareDeViata = () => {
         <Life />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Numita generic „asigurare de viată”, acest tip de instrument financiar
           are obiective diverse, care pot fi combinate. Aceasta oferă in general
           protectie, ajutand familia beneficiarului să iși păstreze standardul
@@ -51,9 +51,8 @@ const AsigurareDeViata = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

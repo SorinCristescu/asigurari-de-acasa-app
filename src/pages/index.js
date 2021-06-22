@@ -4,24 +4,14 @@ import MailchimpForm from '../components/ui/MailchimpForm';
 import Hero from '../components/ui/Hero';
 import Card from '../components/ui/Card';
 import Testimonial from '../components/ui/Testimonial';
-
-import { useKeenSlider } from 'keen-slider/react';
 import MarqueeComponent from '../components/ui/Marque';
 import Carousel from '../components/ui/Carousel';
-
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Center, Text, Heading, Box } from '@chakra-ui/react';
 import HeroImage from '../svg/hero.svg';
 import { insurances } from '../utils/insurances';
 import { partners } from '../utils/partners';
 import { testimonials } from '../utils/testimonials';
+
 const Index = () => {
   return (
     <>
@@ -40,10 +30,9 @@ const Index = () => {
       <Flex
         direction="row"
         w="100%"
-        h="100vh"
         align="center"
         justify="space-between"
-        wrap
+        flexWrap="wrap"
       >
         <Flex
           minWidth="50%"
@@ -73,7 +62,6 @@ const Index = () => {
             textSize="18px"
             width="500px"
             height="350px"
-            // item={item}
             padding="50px"
             borderRadius="0"
           />
@@ -155,9 +143,8 @@ const Index = () => {
       </Flex>
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

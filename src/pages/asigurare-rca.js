@@ -35,7 +35,7 @@ const AsigurareRCA = ({ SEO }) => {
         <RCA />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Polita de Asigurarea de Răspundere Civilă Auto (RCA) este practic un
           contract incheiat intre proprietarul unui vehicul, persoană fizică sau
           juridică și o societate de asigurări care are dreptul de a practica
@@ -54,9 +54,8 @@ const AsigurareRCA = ({ SEO }) => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

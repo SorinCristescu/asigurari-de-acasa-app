@@ -33,7 +33,7 @@ const AsigurareDeAccidente = () => {
         <Accidente />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Poate fi incheiata atat de persoane fizice cat si de persoane
           juridice, ca polita individuala sau de grup.Aceasta asigurare este
           recomandata in general persoanelor care in urma desfasurarii
@@ -50,9 +50,8 @@ const AsigurareDeAccidente = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

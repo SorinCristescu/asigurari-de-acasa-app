@@ -2,18 +2,17 @@ import React, { useState, useEffect, useRef, cloneElement } from 'react';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import styles from './Carousel.module.css';
-import { useColorMode, IconButton } from '@chakra-ui/react';
+import { IconButton } from '@chakra-ui/react';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 
 function ArrowLeft(props) {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
   const disabeld = props.disabled ? styles.arrowDisabled : '';
   return (
     <IconButton
       isRound
       size="md"
       variant="ghost"
+      color="#808080"
       onClick={props.onClick}
       className={`${styles.arrow} ${styles.arrowLeft} ${disabeld}`}
       icon={<FaLongArrowAltUp />}
@@ -22,14 +21,13 @@ function ArrowLeft(props) {
 }
 
 function ArrowRight(props) {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
   const disabeld = props.disabled ? styles.arrowDisabled : '';
   return (
     <IconButton
       isRound
       size="md"
       variant="ghost"
+      color="#808080"
       onClick={props.onClick}
       className={`${styles.arrow} ${styles.arrowRight} ${disabeld}`}
       icon={<FaLongArrowAltDown />}
@@ -46,7 +44,7 @@ const Carousel = ({ children, items, width, height }) => {
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },
-    // loop: true,
+    loop: true,
     // spacing: 15,
     // centered: true,
     vertical: true,
@@ -73,7 +71,7 @@ const Carousel = ({ children, items, width, height }) => {
       if (!pause && slider) {
         slider.next();
       }
-    }, 4000);
+    }, 10000);
     return () => {
       clearInterval(timer.current);
     };

@@ -31,7 +31,7 @@ const AsigurareDeSanatate = () => {
         <Sanatate />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Asigurarea de sănătate are drept scop compensarea integrala sau
           partiala a asiguratului, in ceea ce priveste costurile tratamentelor
           medicale, ale cazurilor de graviditate maternală și in caz de
@@ -48,9 +48,8 @@ const AsigurareDeSanatate = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

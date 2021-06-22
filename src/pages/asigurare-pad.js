@@ -34,7 +34,7 @@ const AsigurarePAD = () => {
         <PAD />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           PAD este polita de asigurare impotriva dezastrelor naturale, o polita
           de asigurare obligatorie care acopera daunele produse de cutremure,
           inundatii sau alunecari de teren ca fenomene naturale asupra
@@ -48,9 +48,8 @@ const AsigurarePAD = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

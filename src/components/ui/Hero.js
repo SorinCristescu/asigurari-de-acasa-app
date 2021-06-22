@@ -9,6 +9,8 @@ import {
   Heading,
   Box,
   Button,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
@@ -40,18 +42,17 @@ const Hero = ({ title, subtitle, children }) => {
 
   return (
     <Flex
-      direction="row"
-      wrap
+      flexWrap="wrap"
       w="full"
       h="100vh"
       align="center"
       justify="flex-start"
     >
-      <Box w="50%">
+      <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }}>
         <Heading
           ref={titleRef}
           as="h1"
-          fontSize="100px"
+          fontSize={{ base: '32px', md: '90px', lg: '100px' }}
           mb="30px"
           noOfLines={2}
         >
@@ -69,7 +70,6 @@ const Hero = ({ title, subtitle, children }) => {
           bg="#4D4DFF"
           color="#FFF9F2"
           _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-          // _focus={{ bg: '#4D4DFF' }}borderRadius="0"
           fontSize="18px"
           borderRadius="0"
           onClick={() => router.push(`${router.pathname}#form`)}
@@ -77,7 +77,7 @@ const Hero = ({ title, subtitle, children }) => {
           Solicita oferta
         </Button>
       </Box>
-      <Center ref={imageRef} w="50%">
+      <Center ref={imageRef} w={{ base: '100%', md: '50%', lg: '50%' }}>
         {children}
       </Center>
     </Flex>

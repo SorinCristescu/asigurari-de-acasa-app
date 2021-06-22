@@ -9,7 +9,7 @@ const Container = (props) => {
   return (
     <Flex
       w="full"
-      px="100px"
+      px={{ base: '20px', md: '100px', lg: '100px' }}
       direction="column"
       alignItems="center"
       justifyContent="flex-start"

@@ -33,7 +33,7 @@ const AsigurareCASCO = () => {
         <CASCO />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           CASCO este o asigurare facultativa, in baza careia compania de
           asigurare achita despagubiri pentru aproape orice daune suferite de
           vehiculul asigurat. Nefiind obligatorie prin lege, decizia de
@@ -49,9 +49,8 @@ const AsigurareCASCO = () => {
       <Steps steps={steps} />
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

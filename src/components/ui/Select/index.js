@@ -21,6 +21,8 @@ const Select = ({
             <ChakraSelect
               width={width}
               mx="10px"
+              _hover={{ color: '#3333FF' }}
+              _expanded={{ color: '#3333FF' }}
               placeholder={placeholder}
               size={size}
               variant="unstyled"

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Flex, Heading, Text, Button, Wrap, WrapItem } from '@chakra-ui/react';
 import Moment from 'react-moment';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 const BlogCard = ({ post }) => {
   const { name, slug, createdAt, description, image_url } = post;
@@ -19,14 +20,11 @@ const BlogCard = ({ post }) => {
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       cursor="pointer"
-      // m="auto"
       w="250px"
       h="350px"
       direction="column"
       align="flex-start"
       justify="flex-start"
-      bg={isHover && '#4D4DFF'}
-      color={isHover && '#FFFFFF'}
       boxShadow="lg"
     >
       <Image
@@ -44,12 +42,23 @@ const BlogCard = ({ post }) => {
         align="flex-start"
         justify="space-between"
       >
-        <Heading fontSize="20px" textAlign="left" m="10px">
+        <Heading
+          fontSize="20px"
+          textAlign="left"
+          m="10px"
+          color={isHover && '#4D4DFF'}
+        >
           {name ? name : ''}
         </Heading>
         <Text fontSize="16px" textAlign="left" m="10px">
           {description ? description : ''}
         </Text>
+        <Link href={`/blog/${slug}`}>
+          <a style={{ fontSize: '16px' }}>
+            Citeste
+            <FaLongArrowAltRight style={{ marginLeft: '10px' }} />
+          </a>
+        </Link>
         <Text fontSize="12px" textAlign="left" m="10px">
           <Moment format="YYYY/MM/DD">{createdAt}</Moment>
         </Text>

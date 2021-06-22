@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router';
-import { Flex, Heading, Text, Button } from '@chakra-ui/react';
-
+import Link from 'next/link';
+import { Flex, Heading, Text, IconButton } from '@chakra-ui/react';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 const Card = ({
   item,
   headingSize,
@@ -11,31 +11,22 @@ const Card = ({
   borderRadius,
   ...rest
 }) => {
-  const { count, title, description, href } = item;
-  const router = useRouter();
-
-  const redirectHandler = () => {
-    if (href) {
-      router.replace(href);
-    }
-  };
+  const { count, title, description, href, isShadow } = item;
 
   return (
     <Flex
       w={width}
       h={height}
-      // bg="#4D4DFF"
-      // color="#FFF9F2"
       direction="column"
       align="flex-start"
       justify="flex-start"
       p={padding}
       borderRadius={borderRadius}
-      boxShadow="lg"
+      boxShadow={isShadow ? 'lg' : 'none'}
       my="10px"
       {...rest}
     >
-      <Text>{count}</Text>
+      <Text fontWeight="bold">{count}</Text>
       <Heading textAlign="left" fontSize={headingSize} mt="20px" mb="40px">
         {title}
       </Heading>
@@ -43,9 +34,11 @@ const Card = ({
         {description}
       </Text>
       {href && (
-        <Button variant="link" onClick={redirectHandler}>
-          Afla mai mult
-        </Button>
+        <Link href={href}>
+          <a>
+            Afla mai mult <FaLongArrowAltRight style={{ marginLeft: '15px' }} />
+          </a>
+        </Link>
       )}
     </Flex>
   );

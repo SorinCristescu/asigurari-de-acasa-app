@@ -34,7 +34,7 @@ const AsigurareDeTransport = () => {
         <Transport />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Asigurarea de raspundere a transportatorului, in calitate de caraus,
           pentru marfurile transportate cu vehicule, vizeaza transporturile
           rutiere de marfa, cu vehicule inmatriculate in Romania, in baza unor
@@ -48,9 +48,8 @@ const AsigurareDeTransport = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

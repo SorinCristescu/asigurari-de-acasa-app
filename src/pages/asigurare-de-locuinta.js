@@ -33,7 +33,7 @@ const AsigurareDeLocuinta = () => {
         <Locuinta />
       </Hero>
       <Flex width="100%" align="center" justify="flex-start">
-        <Text mb="50px" width="50%">
+        <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Aceasta asigurare facultativa vine in completarea asigurarii
           obligatorii PAD, prin acoperirea mai multor riscuri precum si ca
           excedent de suma asigurata pe cele 3 riscuri acoperite de PAD.
@@ -46,9 +46,8 @@ const AsigurareDeLocuinta = () => {
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+
+      <MailchimpForm />
     </>
   );
 };

@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Moment from 'react-moment';
 import { Flex, Text, Heading, IconButton, Center } from '@chakra-ui/react';
-import { FaPencilAlt, FaTimes } from 'react-icons/fa';
+import { FaPencilAlt, FaTimes, FaLongArrowAltLeft } from 'react-icons/fa';
 
 const Header = ({ children, ...props }) => (
   <Heading my="20px" {...props}>
@@ -142,8 +142,9 @@ const BlogPost = ({ post }) => {
         </Flex>
         <Center w="100%" h="100px">
           <Link href="/blog">
-            <a>
-              <Text fontSize="24px">{'< '} Back</Text>
+            <a style={{ fontSize: '16px' }}>
+              <FaLongArrowAltLeft style={{ marginRight: '10px' }} /> Vezi toate
+              postarile
             </a>
           </Link>
         </Center>

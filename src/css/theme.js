@@ -4,10 +4,12 @@ import { styles } from './globalStyles';
 const fonts = { mono: `'Menlo', monospace` };
 
 const breakpoints = createBreakpoints({
-  sm: '40em',
-  md: '52em',
-  lg: '64em',
-  xl: '80em',
+  xs: '30em', // 480
+  sm: '40em', // 640
+  md: '52em', // 832
+  lg: '64em', // 1024
+  xl: '80em', // 1280
+  '2xl': '96em', // 1536
 });
 
 const config = {
