@@ -50,7 +50,6 @@ const AsigurareDeAccidente = () => {
 
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

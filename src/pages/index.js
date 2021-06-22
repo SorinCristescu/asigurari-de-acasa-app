@@ -33,9 +33,10 @@ const Index = () => {
         align="center"
         justify="space-between"
         flexWrap="wrap"
+        my="100px"
       >
         <Flex
-          minWidth="50%"
+          width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
           direction="column"
           align="flex-start"
           justify="center"
@@ -56,16 +57,18 @@ const Index = () => {
             sint.
           </Text>
         </Flex>
-        <Carousel items={insurances} width="100%" height="400px">
-          <Card
-            headingSize="36px"
-            textSize="18px"
-            width="500px"
-            height="350px"
-            padding="50px"
-            borderRadius="0"
-          />
-        </Carousel>
+        <Box width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}>
+          <Carousel items={insurances} width="100%" height="400px">
+            <Card
+              headingSize="36px"
+              textSize="18px"
+              width="100%"
+              height="350px"
+              padding="50px"
+              borderRadius="0"
+            />
+          </Carousel>
+        </Box>
       </Flex>
       <Flex
         direction="column"
@@ -75,7 +78,7 @@ const Index = () => {
         justify="center"
         pb="100px"
       >
-        <Heading
+        {/* <Heading
           as="h2"
           fontSize="48px"
           mb="30px"
@@ -85,17 +88,26 @@ const Index = () => {
         >
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint
-        </Heading>
+        </Heading> */}
 
         {/* PARTNERS
     ----------------------*/}
-        <Flex direction="row" w="100%" h="60vh" align="center" justify="center">
-          <Box w="50%" pr="50px">
+        <Flex
+          flexWrap="wrap"
+          direction="row"
+          w="100%"
+          align="center"
+          justify="center"
+        >
+          <Box
+            w={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
+            pr="50px"
+          >
             <Heading as="h3" fontSize="48px" mb="30px" noOfLines={2}>
               Amet minim mollit non deserunt ullamco
             </Heading>
           </Box>
-          <Box w="50%" p="50px">
+          <Box w={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}>
             <Text mb="30px" fontSize="lg" noOfLines={8}>
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
               amet sint. Velit officia consequat duis enim velit mollit.
@@ -108,7 +120,7 @@ const Index = () => {
             </Text>
           </Box>
         </Flex>
-        <Box w="100%" h="200px">
+        <Box w="100%" h="200px" mt="100px">
           <MarqueeComponent gradient={false} direction="right">
             {partners.map((image, index) => (
               <Image
@@ -128,8 +140,8 @@ const Index = () => {
     ----------------------*/}
       <Flex
         my="100px"
-        width="60%"
-        height="500px"
+        width={{ base: '100%', sm: '100%', md: '100%', lg: '60%' }}
+        h={{ base: '600px', sm: '600px', md: '500px', lg: '500px' }}
         direction="column"
         align="center"
         justify="center"
@@ -137,13 +149,12 @@ const Index = () => {
         <Heading fontSize="36px" mb="50px">
           Ce spun clientii nostri despre noi
         </Heading>
-        <Carousel items={testimonials} width="100%" height="400px">
+        <Carousel items={testimonials} width="100%" h="500px">
           <Testimonial />
         </Carousel>
       </Flex>
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

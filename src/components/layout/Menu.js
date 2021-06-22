@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import Dropdown from '../ui/Dropdown';
 import { insurances } from '../../utils/insurances';
 
@@ -64,49 +64,46 @@ const Menu = ({ setIsMenuOpen, isMenuOpen, bgColor, colorMode, color }) => {
         justify="center"
         fontSize="48px"
       >
-        <Link href="/asigurare-rca" onClick={() => setIsMenuOpen(isMenuOpen)}>
+        <Link href="/asigurare-rca" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Asigurare RCA</a>
         </Link>
-        <Link href="/asigurare-casco" onClick={() => setIsMenuOpen(isMenuOpen)}>
+        <Link href="/asigurare-casco" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Asigurare CASCO</a>
         </Link>
-        <Link
-          href="/asigurare-de-viata"
-          onClick={() => setIsMenuOpen(isMenuOpen)}
-        >
+        <Link href="/asigurare-de-viata" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Asigurare de viata</a>
         </Link>
         <Link
           href="/asigurare-de-transport"
-          onClick={() => setIsMenuOpen(isMenuOpen)}
+          onClick={() => setIsMenuOpen(false)}
         >
           <a style={{ fontSize: '18px' }}>Asigurare de transport</a>
         </Link>
-        <Link href="/asigurare-pad" onClick={() => setIsMenuOpen(isMenuOpen)}>
+        <Link href="/asigurare-pad" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Asigurare PAD</a>
         </Link>
         <Link
           href="/asigurare-de-locuinta"
-          onClick={() => setIsMenuOpen(isMenuOpen)}
+          onClick={() => setIsMenuOpen(false)}
         >
           <a style={{ fontSize: '18px' }}>Asigurare de locuinta</a>
         </Link>
         <Link
           href="/asigurare-de-sanatate"
-          onClick={() => setIsMenuOpen(isMenuOpen)}
+          onClick={() => setIsMenuOpen(false)}
         >
           <a style={{ fontSize: '18px' }}>Asigurare de sanatate</a>
         </Link>
         <Link
           href="/asigurare-de-accidente"
-          onClick={() => setIsMenuOpen(isMenuOpen)}
+          onClick={() => setIsMenuOpen(false)}
         >
           <a style={{ fontSize: '18px' }}>Asigurare de accidente</a>
         </Link>
-        <Link href="/despre" onClick={() => setIsMenuOpen(isMenuOpen)}>
+        <Link href="/despre" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Despre noi</a>
         </Link>
-        <Link href="/blog" onClick={() => setIsMenuOpen(isMenuOpen)}>
+        <Link href="/blog" onClick={() => setIsMenuOpen(false)}>
           <a style={{ fontSize: '18px' }}>Blog</a>
         </Link>
       </Flex>

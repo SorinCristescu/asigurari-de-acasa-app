@@ -9,7 +9,7 @@ const Testimonial = ({ item }) => {
       height="450px"
       align="center"
       justify="center"
-      px="100px"
+      px={{ base: '0px', sm: '50px', md: '50px', lg: '50px', xl: '50px' }}
     >
       <Avatar size="2xl" name={name} src={src} />
       <Text textAlign="center" my="30px">

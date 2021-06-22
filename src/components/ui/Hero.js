@@ -1,17 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react';
+import { Flex, Center, Text, Heading, Box, Button } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 
 const Hero = ({ title, subtitle, children }) => {
@@ -44,7 +34,7 @@ const Hero = ({ title, subtitle, children }) => {
     <Flex
       flexWrap="wrap"
       w="full"
-      h="100vh"
+      minHeight="100vh"
       align="center"
       justify="flex-start"
     >
@@ -52,7 +42,13 @@ const Hero = ({ title, subtitle, children }) => {
         <Heading
           ref={titleRef}
           as="h1"
-          fontSize={{ base: '32px', md: '90px', lg: '100px' }}
+          fontSize={{
+            base: '48px',
+            // sm: '90px',
+            md: '90px',
+            lg: '100px',
+            xl: '100px',
+          }}
           mb="30px"
           noOfLines={2}
         >
@@ -78,7 +74,7 @@ const Hero = ({ title, subtitle, children }) => {
         </Button>
       </Box>
       <Center ref={imageRef} w={{ base: '100%', md: '50%', lg: '50%' }}>
-        {children}
+        <Center>{children}</Center>
       </Center>
     </Flex>
   );

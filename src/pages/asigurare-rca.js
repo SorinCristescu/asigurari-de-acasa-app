@@ -54,7 +54,6 @@ const AsigurareRCA = ({ SEO }) => {
 
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

@@ -10,6 +10,8 @@ import {
   Heading,
   Box,
   Button,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import About from '../svg/about.svg';
 import { values } from '../utils/values';
@@ -28,6 +30,7 @@ const Despre = () => {
       </Hero>
 
       <Flex
+        flexWrap="wrap"
         pt="100px"
         direction="row"
         w="100%"
@@ -35,12 +38,12 @@ const Despre = () => {
         align="flex-start"
         justify="center"
       >
-        <Box w="50%" pr="50px">
+        <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }} pr="50px">
           <Heading as="h3" fontSize="48px" mb="30px" noOfLines={2}>
             Amet minim mollit non deserunt ullamco
           </Heading>
         </Box>
-        <Box w="50%" px="50px">
+        <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }}>
           <Text mb="30px" fontSize="lg" noOfLines={8}>
             Asigurari de acasa, a aparut din dorinta de a te ajuta, de ati oferi
             consultanta pentru ca tu să iei cea mai bună decizie. Impreuna cu
@@ -57,32 +60,25 @@ const Despre = () => {
 
       {/* ADDED VALUES 
     ---------------------------------------------------------------- */}
-      <Flex
-        direction="row"
-        w="100%"
-        h="100vh"
-        align="center"
-        justify="space-between"
-      >
+      <Wrap justify="space-between" w="100%">
         {values?.map((value) => (
-          <Card
-            headingSize="24px"
-            textSize="14px"
-            width="220px"
-            height="300px"
-            key={value.count}
-            item={value}
-            padding="20px"
-            borderRadius="0"
-          />
+          <WrapItem key={value.count}>
+            <Card
+              headingSize="24px"
+              textSize="14px"
+              width="220px"
+              height="300px"
+              item={value}
+              padding="20px"
+              borderRadius="0"
+            />
+          </WrapItem>
         ))}
-      </Flex>
+      </Wrap>
 
       {/* FORM 
     ----------------------*/}
-      <Center id="form" w="100%" h="100vh">
-        <MailchimpForm />
-      </Center>
+      <MailchimpForm />
     </>
   );
 };

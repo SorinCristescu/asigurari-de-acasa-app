@@ -43,12 +43,10 @@ const AsigurarePAD = () => {
       </Flex>
       {/* STEPS 
     ----------------------*/}
-
       <Steps steps={steps} />
 
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

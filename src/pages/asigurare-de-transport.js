@@ -48,7 +48,6 @@ const AsigurareDeTransport = () => {
 
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

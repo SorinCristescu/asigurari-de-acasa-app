@@ -49,7 +49,6 @@ const AsigurareCASCO = () => {
       <Steps steps={steps} />
       {/* FORM 
     ----------------------*/}
-
       <MailchimpForm />
     </>
   );

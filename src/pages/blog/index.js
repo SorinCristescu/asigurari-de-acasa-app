@@ -54,7 +54,7 @@ const Blog = ({ posts }) => {
           <Text ref={numberRef} fontSize="10px">
             articole ({posts.length})
           </Text>
-          <Wrap my="50px" spacing="30px" w="900px">
+          <Wrap justify="center" my="50px" spacing="30px" w="100%">
             {posts?.map((post, index) => {
               return (
                 <WrapItem
