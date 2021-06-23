@@ -15,9 +15,7 @@ const Steps = ({ steps }) => {
 
   useEffect(() => {
     timer.current = setInterval(() => {
-      // if (count === 0) {
       next();
-      // }
     }, 13500);
     return () => {
       clearInterval(timer.current);
@@ -147,6 +145,7 @@ const Steps = ({ steps }) => {
         position="absolute"
         top="0px"
         right="0"
+        zIndex="10"
       >
         <IconButton
           onClick={prev}
