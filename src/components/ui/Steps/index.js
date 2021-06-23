@@ -145,7 +145,7 @@ const Steps = ({ steps }) => {
         position="absolute"
         top="0px"
         right="0"
-        zIndex="10"
+        zIndex="1"
       >
         <IconButton
           onClick={prev}
@@ -153,6 +153,7 @@ const Steps = ({ steps }) => {
           color="#808080"
           isRound
           icon={<FaLongArrowAltUp />}
+          zIndex="1"
         />
         <IconButton
           onClick={next}
@@ -160,6 +161,7 @@ const Steps = ({ steps }) => {
           color="#808080"
           isRound
           icon={<FaLongArrowAltDown />}
+          zIndex="0"
         />
       </Flex>
       <Box

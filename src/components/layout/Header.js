@@ -18,7 +18,7 @@ const Header = ({ isMenuOpen, onToggle, onClose }) => {
       height="100px"
       width="100%"
       px={{ base: '20px', md: '100px', lg: '100px' }}
-      zIndex="1000"
+      zIndex="10"
       background={isDark ? '#171923' : '#FBFBFB '}
     >
       <Box onClick={onClose}>

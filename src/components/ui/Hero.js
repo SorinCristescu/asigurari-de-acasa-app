@@ -55,7 +55,7 @@ const Hero = ({ title, subtitle, children }) => {
         >
           {title}
         </Heading>
-        <Text ref={subtitleRef} mb="50px" fontSize="lg" noOfLines={2}>
+        <Text ref={subtitleRef} mb="50px" fontSize="24px" noOfLines={8}>
           {subtitle}
         </Text>
         <Button

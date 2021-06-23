@@ -12,11 +12,6 @@ import Footer from './Footer';
 import Header from './Header';
 import Menu from './Menu';
 import GDPR from './CookieConsent';
-import dynamic from 'next/dynamic';
-
-const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
-  ssr: false,
-});
 
 const Layout = (props) => {
   const { colorMode } = useColorMode();
@@ -35,14 +30,6 @@ const Layout = (props) => {
       position="relative"
       {...props}
     >
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={20}
-        color="77, 77, 255"
-        outerAlpha={0.2}
-        innerScale={0.5}
-        outerScale={3}
-      />
       <Header onToggle={onToggle} isMenuOpen={isOpen} onClose={onClose} />
 
       <Slide in={isOpen} style={{ zIndex: 10 }}>
