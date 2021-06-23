@@ -2,15 +2,7 @@ import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Transport from '../svg/transport.svg';
 
 import { insurances } from '../utils/insurances';
@@ -33,7 +25,7 @@ const AsigurareDeTransport = () => {
       >
         <Transport />
       </Hero>
-      <Flex width="100%" align="center" justify="flex-start">
+      <Flex width="100%" align="center" justify="flex-start" mt="50px">
         <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Asigurarea de raspundere a transportatorului, in calitate de caraus,
           pentru marfurile transportate cu vehicule, vizeaza transporturile
@@ -48,6 +40,7 @@ const AsigurareDeTransport = () => {
 
       {/* FORM 
     ----------------------*/}
+
       <MailchimpForm />
     </>
   );

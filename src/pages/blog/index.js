@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import PageHead from '../../components/layout/PageHead';
 import Link from 'next/link';
@@ -48,10 +48,21 @@ const Blog = ({ posts }) => {
           align="center"
           justify="center"
         >
-          <Heading ref={titleRef} as="h1" fontSize="100px" mb="50px">
+          <Heading
+            ref={titleRef}
+            as="h1"
+            fontSize={{ base: '48px', sm: '48px', md: '100px', lg: '100px' }}
+            textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+            mb="50px"
+          >
             Din lumea asigurarilor
           </Heading>
-          <Text ref={numberRef} fontSize="10px">
+          <Text
+            ref={numberRef}
+            fontSize="10px"
+            w="full"
+            textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+          >
             articole ({posts.length})
           </Text>
           <Wrap justify="center" my="50px" spacing="30px" w="100%">

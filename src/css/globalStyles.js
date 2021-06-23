@@ -20,6 +20,7 @@ export const styles = {
       boxShadow: 'none !important',
       outline: 'none !important',
     },
+
     a: {
       marginRight: '30px',
       fontSize: '16px',
@@ -41,7 +42,7 @@ export const styles = {
     p: {
       fontSize: '16px',
       fontWeight: 'semibold',
-      color: '#808080',
+      // color: '#808080',
     },
   }),
 };

@@ -1,4 +1,4 @@
-import { Flex, Center, Text, IconButton } from '@chakra-ui/react';
+import { Flex, Box, Center, Text, IconButton } from '@chakra-ui/react';
 
 import Link from 'next/link';
 import Logo from '../ui/Logo';
@@ -6,15 +6,18 @@ import {
   FaFacebookSquare,
   FaInstagramSquare,
   FaLinkedin,
+  FaPhone,
+  FaHome,
+  FaEnvelope,
 } from 'react-icons/fa';
-
+import { insurances } from '../../utils/insurances';
 const Footer = () => {
   return (
     <Flex
       flexWrap="wrap"
       width="100%"
       px={{ base: '20px', md: '100px', lg: '100px' }}
-      my="50px"
+      py="50px"
       direction="row"
       align="center"
       justify="space-between"
@@ -47,30 +50,11 @@ const Footer = () => {
           align="flex-start"
           justify="flex-start"
         >
-          <Link href="/asigurare-rca">
-            <a>Asigurare RCA</a>
-          </Link>
-          <Link href="/asigurare-casco">
-            <a>Asigurare CASCO</a>
-          </Link>
-          <Link href="/asigurare-de-viata">
-            <a>Asigurare de viata</a>
-          </Link>
-          <Link href="/asigurare-de-transport">
-            <a>Asigurare de transport</a>
-          </Link>
-          <Link href="/asigurare-pad">
-            <a>Asigurare PAD</a>
-          </Link>
-          <Link href="/asigurare-de-locuinta">
-            <a>Asigurare de locuinta</a>
-          </Link>
-          <Link href="/asigurare-de-sanatate">
-            <a>Asigurare de sanatate</a>
-          </Link>
-          <Link href="/asigurare-de-accidente">
-            <a>Asigurare de accidente</a>
-          </Link>
+          {insurances.map((link) => (
+            <Link href={link.href}>
+              <a>{link.title}</a>
+            </Link>
+          ))}
         </Flex>
 
         <Flex
@@ -140,6 +124,45 @@ const Footer = () => {
           />
         </Center>
       </Flex>
+      <Box pt="20px">
+        <Flex
+          w="100%"
+          pt="5px"
+          direction="row"
+          align="center"
+          justify="flex-start"
+        >
+          <FaHome />
+          <Text ml="10px" fontSize="14px" textAlign="left">
+            Bucuresti, sector 4, Aleea Tomesti nr 10A, Corp B, etaj 1, ap 10
+          </Text>
+        </Flex>
+        <Flex
+          w="100%"
+          pt="5px"
+          direction="row"
+          align="center"
+          justify="flex-start"
+        >
+          <FaPhone />
+          <Text ml="10px" fontSize="14px" textAlign="left">
+            0722 354 935
+          </Text>
+        </Flex>
+        <Flex
+          w="100%"
+          pt="5px"
+          direction="row"
+          align="center"
+          justify="flex-start"
+        >
+          <FaEnvelope />
+          <Text ml="10px" fontSize="14px" textAlign="left">
+            office@asigurarideacasa.ro
+          </Text>
+        </Flex>
+      </Box>
+      {/* <Text>© Copyright {Date.now()}</Text> */}
     </Flex>
   );
 };

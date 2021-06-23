@@ -4,15 +4,7 @@ import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
 import RCA from '../svg/rca.svg';
 
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 
 import { insurances } from '../utils/insurances';
 
@@ -34,7 +26,7 @@ const AsigurareRCA = ({ SEO }) => {
       >
         <RCA />
       </Hero>
-      <Flex width="100%" align="center" justify="flex-start">
+      <Flex width="100%" align="center" justify="flex-start" mt="50px">
         <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Polita de Asigurarea de Răspundere Civilă Auto (RCA) este practic un
           contract incheiat intre proprietarul unui vehicul, persoană fizică sau
@@ -54,6 +46,7 @@ const AsigurareRCA = ({ SEO }) => {
 
       {/* FORM 
     ----------------------*/}
+
       <MailchimpForm />
     </>
   );

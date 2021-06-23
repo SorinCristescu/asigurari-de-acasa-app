@@ -2,15 +2,7 @@ import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import CASCO from '../svg/casco.svg';
 import { insurances } from '../utils/insurances';
 
@@ -32,7 +24,7 @@ const AsigurareCASCO = () => {
       >
         <CASCO />
       </Hero>
-      <Flex width="100%" align="center" justify="flex-start">
+      <Flex width="100%" align="center" justify="flex-start" mt="50px">
         <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           CASCO este o asigurare facultativa, in baza careia compania de
           asigurare achita despagubiri pentru aproape orice daune suferite de
@@ -49,6 +41,7 @@ const AsigurareCASCO = () => {
       <Steps steps={steps} />
       {/* FORM 
     ----------------------*/}
+
       <MailchimpForm />
     </>
   );

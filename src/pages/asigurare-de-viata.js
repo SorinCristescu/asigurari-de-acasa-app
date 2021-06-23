@@ -2,15 +2,7 @@ import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import Life from '../svg/life.svg';
 
 import { insurances } from '../utils/insurances';
@@ -33,12 +25,12 @@ const AsigurareDeViata = () => {
       >
         <Life />
       </Hero>
-      <Flex width="100%" align="center" justify="flex-start">
+      <Flex width="100%" align="center" justify="flex-start" mt="50px">
         <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           Numita generic „asigurare de viată”, acest tip de instrument financiar
           are obiective diverse, care pot fi combinate. Aceasta oferă in general
-          protectie, ajutand familia beneficiarului să iși păstreze standardul
-          de viată in cazul unor evenimente neprevăzute. Adesea, companiile de
+          protectie, ajutand familia asiguratului să iși păstreze standardul de
+          viată in cazul unor evenimente neprevăzute. Adesea, companiile de
           asigurări adaugă componente de economisire, investitii sau de
           sănătate, astfel incat produsele de asigurare din aceasta categorie,
           să se plieze cat mai bine pe interesele fiecărui client in parte.
@@ -51,6 +43,7 @@ const AsigurareDeViata = () => {
 
       {/* FORM 
     ----------------------*/}
+
       <MailchimpForm />
     </>
   );

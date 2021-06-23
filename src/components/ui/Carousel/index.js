@@ -27,7 +27,6 @@ function ArrowRight(props) {
       isRound
       size="md"
       variant="ghost"
-      color="#808080"
       onClick={props.onClick}
       className={`${styles.arrow} ${styles.arrowRight} ${disabeld}`}
       icon={<FaLongArrowAltDown />}
@@ -45,7 +44,7 @@ const Carousel = ({ children, items, width, height }) => {
       setCurrentSlide(s.details().relativeSlide);
     },
     loop: true,
-    // spacing: 15,
+    spacing: 20,
     // centered: true,
     vertical: true,
     duration: 1000,

@@ -7,7 +7,8 @@ const Card = ({
   textSize,
   width,
   height,
-  padding,
+  paddingRight,
+  paddingLeft,
   borderRadius,
   ...rest
 }) => {
@@ -20,7 +21,8 @@ const Card = ({
       direction="column"
       align="flex-start"
       justify="flex-start"
-      p={padding}
+      pr={paddingRight}
+      pl={paddingLeft}
       borderRadius={borderRadius}
       boxShadow={isShadow ? 'lg' : 'none'}
       my="10px"

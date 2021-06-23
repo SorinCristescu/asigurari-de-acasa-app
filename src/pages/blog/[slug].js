@@ -9,7 +9,15 @@ import MailchimpForm from '../../components/ui/MailchimpForm';
 import Link from 'next/link';
 import Image from 'next/image';
 import Moment from 'react-moment';
-import { Flex, Text, Heading, IconButton, Center } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  Heading,
+  IconButton,
+  Center,
+  UnorderedList,
+  ListItem,
+} from '@chakra-ui/react';
 import { FaPencilAlt, FaTimes, FaLongArrowAltLeft } from 'react-icons/fa';
 
 const Header = ({ children, ...props }) => (
@@ -22,6 +30,16 @@ const Paragraph = ({ children, ...props }) => (
   <Text my="20px" {...props}>
     {children}
   </Text>
+);
+
+const List = ({ children, ...props }) => (
+  <UnorderedList {...props}>{children}</UnorderedList>
+);
+
+const Li = ({ children, ...props }) => (
+  <ListItem my="10px" fontSize="16px" fontWeight="semibold" {...props}>
+    {children}
+  </ListItem>
 );
 
 const BlogPost = ({ post }) => {
@@ -56,7 +74,7 @@ const BlogPost = ({ post }) => {
       />
       <Flex
         pt="100px"
-        w="60%"
+        w={{ base: '100%', sm: '100%', md: '100%', lg: '60%' }}
         direction="column"
         align="center"
         justify="flex-start"
@@ -82,10 +100,19 @@ const BlogPost = ({ post }) => {
           height={600}
         />
 
-        <Heading textAlign="center" fontSize="48px" mt="50px">
+        <Heading
+          textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+          fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
+          mt="50px"
+        >
           {post.name ? post.name : ''}
         </Heading>
-        <Text fontSize="12px" my="30px">
+        <Text
+          w="full"
+          fontSize="12px"
+          my="30px"
+          textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+        >
           <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
         </Text>
         {/* <Flex
@@ -134,6 +161,18 @@ const BlogPost = ({ post }) => {
                     className: 'foo',
                   },
                 },
+                li: {
+                  component: Li,
+                  props: {
+                    className: 'foo',
+                  },
+                },
+                ul: {
+                  component: List,
+                  props: {
+                    className: 'foo',
+                  },
+                },
               },
             }}
           >
@@ -148,9 +187,8 @@ const BlogPost = ({ post }) => {
             </a>
           </Link>
         </Center>
-        <Center w="100%" h="100vh">
-          <MailchimpForm />
-        </Center>
+
+        <MailchimpForm />
       </Flex>
     </>
   );

@@ -37,20 +37,21 @@ const Hero = ({ title, subtitle, children }) => {
       minHeight="100vh"
       align="center"
       justify="flex-start"
+      pt={{ base: '100px', sm: '100px', md: '0px', lg: '0px' }}
     >
       <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }}>
         <Heading
           ref={titleRef}
           as="h1"
           fontSize={{
-            base: '48px',
-            // sm: '90px',
+            base: '50px',
+            sm: '50px',
             md: '90px',
             lg: '100px',
             xl: '100px',
           }}
           mb="30px"
-          noOfLines={2}
+          noOfLines={3}
         >
           {title}
         </Heading>

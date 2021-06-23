@@ -3,7 +3,12 @@ import { Text, Heading, Flex } from '@chakra-ui/react';
 
 const PoliticaDeConfidentialitate = () => {
   return (
-    <Flex direction="column" pt="150px" w="70%" pb="100px">
+    <Flex
+      direction="column"
+      pt="150px"
+      w={{ base: '100%', md: '100%', lg: '70%' }}
+      pb="100px"
+    >
       <PageHead title="asigurari de acasa - Politica de confidentialitate" />
       {/* HERO
     ----------------------*/}

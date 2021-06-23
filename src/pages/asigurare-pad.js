@@ -2,15 +2,7 @@ import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Steps from '../components/ui/Steps';
-import {
-  Flex,
-  Spacer,
-  Center,
-  Text,
-  Heading,
-  Box,
-  Button,
-} from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import PAD from '../svg/pad.svg';
 
 import { insurances } from '../utils/insurances';
@@ -33,7 +25,7 @@ const AsigurarePAD = () => {
       >
         <PAD />
       </Hero>
-      <Flex width="100%" align="center" justify="flex-start">
+      <Flex width="100%" align="center" justify="flex-start" mt="50px">
         <Text width={{ base: '100%', md: '100%', lg: '70%' }}>
           PAD este polita de asigurare impotriva dezastrelor naturale, o polita
           de asigurare obligatorie care acopera daunele produse de cutremure,
@@ -47,6 +39,7 @@ const AsigurarePAD = () => {
 
       {/* FORM 
     ----------------------*/}
+
       <MailchimpForm />
     </>
   );
