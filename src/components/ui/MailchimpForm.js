@@ -71,6 +71,7 @@ const FormContainer = () => {
       onSubmitProps.resetForm();
       setConsent(false);
       toast.success('Informatia a fost trimisa cu success!');
+      router.push('/success');
     }
   };
 
