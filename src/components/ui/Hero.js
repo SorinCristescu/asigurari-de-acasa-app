@@ -69,7 +69,7 @@ const Hero = ({ title, subtitle, children }) => {
           _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
           fontSize="18px"
           borderRadius="0"
-          onClick={() => router.push(`${router.pathname}#form`)}
+          onClick={() => router.push(`#form`)}
         >
           Solicita oferta
         </Button>
