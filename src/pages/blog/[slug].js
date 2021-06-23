@@ -72,13 +72,7 @@ const BlogPost = ({ post }) => {
         description={post.description ? post.description : ''}
         keywords={post.keywords ? post.keywords : ''}
       />
-      <Flex
-        pt="100px"
-        w={{ base: '100%', sm: '100%', md: '100%', lg: '60%' }}
-        direction="column"
-        align="center"
-        justify="flex-start"
-      >
+      <Flex w="100%" direction="column" align="center" justify="flex-start">
         <ToastContainer
           position="bottom-center"
           autoClose={5000}
@@ -90,32 +84,39 @@ const BlogPost = ({ post }) => {
           draggable
           pauseOnHover
         />
-        <Image
-          src={
-            post.image_url
-              ? post.image_url.formats.medium.url
-              : '/images/default.jpg'
-          }
-          width={960}
-          height={600}
-        />
+        <Flex
+          pt="100px"
+          w={{ base: '100%', sm: '100%', md: '90%', lg: '80%', xl: '70%' }}
+          direction="column"
+          align="center"
+          justify="flex-start"
+        >
+          <Image
+            src={
+              post.image_url
+                ? post.image_url.formats.medium.url
+                : '/images/default.jpg'
+            }
+            width={960}
+            height={600}
+          />
 
-        <Heading
-          textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
-          fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
-          mt="50px"
-        >
-          {post.name ? post.name : ''}
-        </Heading>
-        <Text
-          w="full"
-          fontSize="12px"
-          my="30px"
-          textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
-        >
-          <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
-        </Text>
-        {/* <Flex
+          <Heading
+            textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+            fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
+            mt="50px"
+          >
+            {post.name ? post.name : ''}
+          </Heading>
+          <Text
+            w="full"
+            fontSize="12px"
+            my="30px"
+            textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
+          >
+            <Moment format="YYYY/MM/DD">{post.createdAt}</Moment>
+          </Text>
+          {/* <Flex
           w="350px"
           h="50px"
           direction="row"
@@ -139,54 +140,55 @@ const BlogPost = ({ post }) => {
             <Text ml="10px">Sterge</Text>
           </Flex>
         </Flex> */}
-        <Flex
-          direction="column"
-          // align="flex-start"
-          // justify="space-between"
-          textAlign="left"
-        >
-          <Markdown
-            options={{
-              forceBlock: true,
-              overrides: {
-                h1: {
-                  component: Header,
-                  props: {
-                    className: 'foo',
-                  },
-                },
-                p: {
-                  component: Paragraph,
-                  props: {
-                    className: 'foo',
-                  },
-                },
-                li: {
-                  component: Li,
-                  props: {
-                    className: 'foo',
-                  },
-                },
-                ul: {
-                  component: List,
-                  props: {
-                    className: 'foo',
-                  },
-                },
-              },
-            }}
+          <Flex
+            direction="column"
+            // align="flex-start"
+            // justify="space-between"
+            textAlign="left"
           >
-            {post.text ? post.text : ''}
-          </Markdown>
+            <Markdown
+              options={{
+                forceBlock: true,
+                overrides: {
+                  h1: {
+                    component: Header,
+                    props: {
+                      className: 'foo',
+                    },
+                  },
+                  p: {
+                    component: Paragraph,
+                    props: {
+                      className: 'foo',
+                    },
+                  },
+                  li: {
+                    component: Li,
+                    props: {
+                      className: 'foo',
+                    },
+                  },
+                  ul: {
+                    component: List,
+                    props: {
+                      className: 'foo',
+                    },
+                  },
+                },
+              }}
+            >
+              {post.text ? post.text : ''}
+            </Markdown>
+          </Flex>
+          <Center w="100%" h="100px">
+            <Link href="/blog">
+              <a style={{ fontSize: '16px' }}>
+                <FaLongArrowAltLeft style={{ marginRight: '10px' }} /> Vezi
+                toate postarile
+              </a>
+            </Link>
+          </Center>
         </Flex>
-        <Center w="100%" h="100px">
-          <Link href="/blog">
-            <a style={{ fontSize: '16px' }}>
-              <FaLongArrowAltLeft style={{ marginRight: '10px' }} /> Vezi toate
-              postarile
-            </a>
-          </Link>
-        </Center>
 
         <MailchimpForm />
       </Flex>

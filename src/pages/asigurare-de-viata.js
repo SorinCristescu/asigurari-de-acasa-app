@@ -48,7 +48,7 @@ const AsigurareDeViata = () => {
         align="left"
         w={{ base: '100%', sm: '100%', md: '100%', lg: '100%' }}
       >
-        Doar {steps.length} pasi pentru obtinerea de {insuranceName}
+        Cum sa obtii o {insuranceName} doar in {steps.length} pasi.
       </Heading>
       <Steps steps={steps} />
 

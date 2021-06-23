@@ -258,7 +258,7 @@ export const insurances = [
     title: 'Asigurare PAD',
     description: 'Atat de necesara in cazul dezastrelor naturale!',
     href: '/asigurare-pad',
-    value: 'Asigurare de accidente',
+    value: 'Asigurare PAD',
     steps: [
       {
         count: '01',

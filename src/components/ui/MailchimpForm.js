@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -20,13 +21,28 @@ import { insurances } from '../../utils/insurances';
 import { FaPaperPlane } from 'react-icons/fa';
 
 const FormContainer = () => {
+  const router = useRouter();
+  let { pathname } = router;
   const [consent, setConsent] = React.useState(false);
+
+  const createInitialInsuranceType = () => {
+    const initialInsuranceType = insurances
+      .filter((insurance) => insurance.href === pathname)
+      .map((insurance) => insurance.value);
+
+    if (pathname === '/' || pathname === '/blog' || pathname === '/despre') {
+      return insurances[0].value;
+    } else {
+      return initialInsuranceType;
+    }
+  };
+
   const initialValues = {
     name: '',
     email: '',
     phone: '',
     message: '',
-    insuranceType: '',
+    insuranceType: createInitialInsuranceType(),
   };
   const validationSchema = Yup.object({
     name: Yup.string().required('Numele este obligatoriu!'),
@@ -120,7 +136,6 @@ const FormContainer = () => {
                     onChange={handleChange}
                   />
                 </div>
-
                 <Input type="text" label="Nume / Denumire firma" name="name" />
                 <Input type="email" label="Email" name="email" />
                 <Input type="phone" label="Telefon" name="phone" />
@@ -156,7 +171,6 @@ const FormContainer = () => {
                     </Flex>
                   </Checkbox>
                 </FormControl>
-
                 <Button
                   isLoading={isSubmitting}
                   loadingText="Se trimite!"
@@ -166,9 +180,7 @@ const FormContainer = () => {
                   borderRadius="0"
                   bg="#4D4DFF"
                   _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-                  // _focus={{ bg: '#4D4DFF' }}
                   color="#FFF9F2"
-                  // colorScheme="red"
                   type="submit"
                   disabled={!(isValid && dirty && consent) || isSubmitting}
                   leftIcon={<FaPaperPlane />}
