@@ -11,6 +11,7 @@ import {
   FaEnvelope,
 } from 'react-icons/fa';
 import { insurances } from '../../utils/insurances';
+
 const Footer = () => {
   return (
     <Flex
@@ -50,8 +51,8 @@ const Footer = () => {
           align="flex-start"
           justify="flex-start"
         >
-          {insurances.map((link) => (
-            <Link href={link.href}>
+          {insurances.map((link, index) => (
+            <Link key={index} href={link.href}>
               <a>{link.title}</a>
             </Link>
           ))}

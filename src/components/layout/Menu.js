@@ -7,7 +7,7 @@ import {
 } from 'react-icons/fa';
 import { insurances } from '../../utils/insurances';
 
-const Menu = ({ onToggle, bgColor, colorMode, color }) => {
+const Menu = ({ onToggle, bgColor, colorMode, color }, ref) => {
   return (
     <Flex
       width="100%"

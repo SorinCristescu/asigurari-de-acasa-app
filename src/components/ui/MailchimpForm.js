@@ -7,19 +7,26 @@ import Input from './Input';
 import TextArea from './TextArea';
 import Select from './Select';
 import CheckBox from './CheckBox';
-import { Button, Heading, Box, Flex, Text } from '@chakra-ui/react';
+import {
+  Button,
+  Heading,
+  Box,
+  Flex,
+  Text,
+  Checkbox,
+  FormControl,
+} from '@chakra-ui/react';
 import { insurances } from '../../utils/insurances';
 import { FaPaperPlane } from 'react-icons/fa';
 
 const FormContainer = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [consent, setConsent] = React.useState(false);
   const initialValues = {
     name: '',
     email: '',
     phone: '',
     message: '',
     insuranceType: '',
-    consent: checked,
   };
   const validationSchema = Yup.object({
     name: Yup.string().required('Numele este obligatoriu!'),
@@ -31,10 +38,6 @@ const FormContainer = () => {
     message: Yup.string(),
     insuranceType: Yup.string().required(
       'Tipul de asigurare este obligatorie!'
-    ),
-    consent: Yup.boolean().isValid(
-      true,
-      'Consimtamantul pentru politica de confidentialitate este obligatoriu!'
     ),
   });
 
@@ -50,8 +53,13 @@ const FormContainer = () => {
     } else {
       onSubmitProps.setSubmitting(false);
       onSubmitProps.resetForm();
+      setConsent(false);
       toast.success('Informatia a fost trimisa cu success!');
     }
+  };
+
+  const handleConsent = (e) => {
+    setConsent(!consent);
   };
 
   return (
@@ -79,6 +87,7 @@ const FormContainer = () => {
           onSubmit={onSubmit}
         >
           {({
+            errors,
             values,
             isValid,
             onSubmitProps,
@@ -87,64 +96,88 @@ const FormContainer = () => {
             setSubmitting,
             resetForm,
             handleChange,
-          }) => (
-            <Form>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '20px',
-                }}
-              >
-                <Heading as="h4" size="md">
-                  Doresc
-                </Heading>
-                <Select
-                  options={insurances}
-                  fontSize="20px"
-                  fontWeight="bold"
-                  width="full"
-                  cursor="pointer"
-                  name="insuranceType"
-                  value={values.insuranceType}
-                  onChange={handleChange}
-                />
-              </div>
+          }) => {
+            return (
+              <Form>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    marginBottom: '20px',
+                  }}
+                >
+                  <Heading as="h4" size="md">
+                    Doresc
+                  </Heading>
+                  <Select
+                    options={insurances}
+                    fontSize="20px"
+                    fontWeight="bold"
+                    width="full"
+                    cursor="pointer"
+                    name="insuranceType"
+                    value={values.insuranceType}
+                    onChange={handleChange}
+                  />
+                </div>
 
-              <Input type="text" label="Nume / Denumire firma" name="name" />
-              <Input type="email" label="Email" name="email" />
-              <Input type="phone" label="Telefon" name="phone" />
-              <TextArea label="Mesaj" name="message" />
-              <CheckBox
-                isChecked={checked}
-                onChange={() => setChecked(!checked)}
-                borderRadius="0"
-                name="consent"
-                value={checked}
-              >
-                Am luat la cunostiinta despre
-                <Link href="/politica-de-confidentialitate">
-                  <a>Politica de Confidentialitate</a>
-                </Link>
-              </CheckBox>
-              <Button
-                w="full"
-                size="lg"
-                variant="solid"
-                borderRadius="0"
-                bg="#4D4DFF"
-                _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-                // _focus={{ bg: '#4D4DFF' }}
-                color="#FFF9F2"
-                // colorScheme="red"
-                type="submit"
-                disabled={!(isValid && dirty) || isSubmitting}
-                rightIcon={<FaPaperPlane />}
-              >
-                Trimite
-              </Button>
-            </Form>
-          )}
+                <Input type="text" label="Nume / Denumire firma" name="name" />
+                <Input type="email" label="Email" name="email" />
+                <Input type="phone" label="Telefon" name="phone" />
+                <TextArea label="Mesaj" name="message" />
+                <FormControl
+                  isInvalid={errors.consent && form.touched.consent}
+                  mb="20px"
+                >
+                  <Checkbox
+                    name="consent"
+                    borderRadius="0"
+                    colorScheme="facebook"
+                    spacing={5}
+                    size="lg"
+                    mt="10px"
+                    mb="30px"
+                    fontSize="14px"
+                    isChecked={consent}
+                    onChange={handleConsent}
+                  >
+                    <Flex display="inline-block">
+                      <Text fontSize="14px">
+                        Bifand aceasta caseta, accept termenii si conditiile
+                        privind prelucrarea datelor cu caracter personal din
+                      </Text>
+                      <span>
+                        <Link href="/politica-de-confidentialitate">
+                          <a style={{ fontSize: '14px' }}>
+                            Politica de Confidentialitate
+                          </a>
+                        </Link>
+                      </span>
+                    </Flex>
+                  </Checkbox>
+                </FormControl>
+
+                <Button
+                  isLoading={isSubmitting}
+                  loadingText="Se trimite!"
+                  w="full"
+                  size="lg"
+                  variant="solid"
+                  borderRadius="0"
+                  bg="#4D4DFF"
+                  _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
+                  // _focus={{ bg: '#4D4DFF' }}
+                  color="#FFF9F2"
+                  // colorScheme="red"
+                  type="submit"
+                  disabled={!(isValid && dirty && consent) || isSubmitting}
+                  leftIcon={<FaPaperPlane />}
+                >
+                  Trimite
+                </Button>
+              </Form>
+            );
+          }}
         </Formik>
       </Box>
     </Flex>

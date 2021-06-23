@@ -22,6 +22,8 @@ const CheckBox = (props) => {
               mt="10px"
               mb="30px"
               fontSize="14px"
+              isChecked={checked}
+              value={checked}
             >
               {children}
             </Checkbox>
