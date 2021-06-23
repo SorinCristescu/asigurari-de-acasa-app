@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { FaAngleDown } from 'react-icons/fa';
-
+import { useDisclosure, useOutsideClick } from '@chakra-ui/react';
 import { Button, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 
 const Dropdown = ({ links, isDark }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const dropdownRef = React.useRef();
+  useOutsideClick({
+    ref: dropdownRef,
+    handler: () => onClose(),
+  });
+
   return (
-    <Menu width="200px" closeOnSelect={true} isOpen={isOpen}>
+    <Menu ref={dropdownRef} width="200px" isOpen={isOpen}>
       <MenuButton
         as={Button}
         borderRadius="0"
@@ -20,7 +26,8 @@ const Dropdown = ({ links, isDark }) => {
         _expanded={{ color: '#3333FF' }}
         // _focus={{ bg: '#4D4DFF' }}
         rightIcon={<FaAngleDown />}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onOpen}
+        //
       >
         Asigurari
       </MenuButton>
@@ -31,7 +38,7 @@ const Dropdown = ({ links, isDark }) => {
       >
         {links &&
           links.map((link, index) => (
-            <MenuItem key={index} onClick={() => setIsOpen(!isOpen)}>
+            <MenuItem key={index} onClick={onClose}>
               <Link href={link.href}>
                 <a>{link.title}</a>
               </Link>

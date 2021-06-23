@@ -97,31 +97,39 @@ const Footer = () => {
           Urmareste-ne pe:
         </Text>
         <Center>
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaFacebookSquare />}
-          />
-
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaInstagramSquare />}
-          />
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaLinkedin />}
-          />
+          <a href="https://www.facebook.com/asigurarideacasa" target="_blank">
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaFacebookSquare />}
+            />
+          </a>
+          <a href="https://www.instagram.com/asigurarideacasa/" target="_blank">
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaInstagramSquare />}
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
+            target="_blank"
+          >
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaLinkedin />}
+            />
+          </a>
         </Center>
       </Flex>
       <Box pt="20px">

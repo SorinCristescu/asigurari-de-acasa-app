@@ -371,7 +371,7 @@ const NotFound = () => {
             </g>
           </g>
           <path
-            fill="#f7727a"
+            fill="#4D4DFF"
             d="M34.719,131.334c0.048,13.082,1.824,26.164,5.184,39.246H80h40.098c3.361-13.08,5.138-26.162,5.186-39.244L34.719,131.334z"
           />
         </g>
@@ -387,6 +387,7 @@ const NotFound = () => {
         variant="solid"
         size="lg"
         bg="#4D4DFF"
+        _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
         color="#FFF9F2"
         borderRadius="0"
         fontSize="18px"

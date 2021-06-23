@@ -51,7 +51,7 @@ const Blog = ({ posts }) => {
           <Heading
             ref={titleRef}
             as="h1"
-            fontSize={{ base: '48px', sm: '48px', md: '100px', lg: '100px' }}
+            fontSize={{ base: '48px', sm: '48px', md: '80px', lg: '80px' }}
             textAlign={{ base: 'left', sm: 'left', md: 'center', lg: 'center' }}
             mb="50px"
           >

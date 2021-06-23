@@ -6,7 +6,7 @@ import Dropdown from '../ui/Dropdown';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { insurances } from '../../utils/insurances';
 
-const Header = ({ isMenuOpen, setIsMenuOpen }) => {
+const Header = ({ isMenuOpen, onToggle, onClose }) => {
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -18,16 +18,16 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
       height="100px"
       width="100%"
       px={{ base: '20px', md: '100px', lg: '100px' }}
-      zIndex="10000"
-      background={`linear-gradient(180deg, ${
-        isDark ? '#171923' : '#FBFBFB '
-      } 73.96%, rgba(251, 251, 251, 0) 100%)`}
+      zIndex="1000"
+      background={isDark ? '#171923' : '#FBFBFB '}
     >
-      <Link href="/">
-        <a>
-          <Logo />
-        </a>
-      </Link>
+      <Box onClick={onClose}>
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
+      </Box>
       <div
         style={{
           display: 'flex',
@@ -35,31 +35,33 @@ const Header = ({ isMenuOpen, setIsMenuOpen }) => {
           justifyContent: 'space-between',
         }}
       >
-        <Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+        <Flex
+          display={{ base: 'none', md: 'flex', lg: 'flex' }}
+          align="center"
+          justify="space-between"
+        >
           <Dropdown links={insurances} isDark={isDark} />
-        </Box>
-        <Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+
           <Link href="/despre">
             <a>Despre noi</a>
           </Link>
-        </Box>
-        <Box display={{ base: 'none', md: 'block', lg: 'block' }}>
+
           <Link href="/blog">
             <a>Blog</a>
           </Link>
-        </Box>
+        </Flex>
         {/* <Link href="/blog/add">
           <a>Adauga o postare pe blog</a>
         </Link> */}
 
         <DarkModeSwitch />
         <IconButton
-          display={{ base: 'block', md: 'none', lg: 'none' }}
+          display={{ base: 'flex', md: 'none', lg: 'none' }}
           isRound
           size="md"
           variant="ghost"
           ml="10px"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={onToggle}
           icon={isMenuOpen ? <FaTimes /> : <FaBars />}
         />
       </div>
