@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import theme from '../css/theme';
@@ -12,6 +12,7 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }) {
+  const [pointer, setPointer] = useState(false);
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -21,7 +22,8 @@ function MyApp({ Component, pageProps }) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events]);
+  }, [router.events, pointer]);
+
   return (
     <ChakraProvider resetCSS theme={theme}>
       <ColorModeProvider
@@ -29,16 +31,18 @@ function MyApp({ Component, pageProps }) {
           useSystemColorMode: true,
         }}
       >
-        <AnimatedCursor
-          innerSize={8}
-          outerSize={20}
-          color="77, 77, 255"
-          outerAlpha={0.2}
-          innerScale={0.5}
-          outerScale={3}
-        />
+        {pointer ? (
+          <AnimatedCursor
+            innerSize={8}
+            outerSize={20}
+            color="77, 77, 255"
+            outerAlpha={0.2}
+            innerScale={0.5}
+            outerScale={3}
+          />
+        ) : null}
 
-        <Layout>
+        <Layout setPointer={setPointer}>
           <Component {...pageProps} />
         </Layout>
       </ColorModeProvider>

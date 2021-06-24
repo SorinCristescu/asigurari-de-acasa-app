@@ -3,15 +3,40 @@ import CookieConsent, {
   Cookies,
   getCookieConsentValue,
 } from 'react-cookie-consent';
-import styles from './GDPR.module.css';
 
-const GDPR = () => {
+const GDPR = ({ setPointer }) => {
   return (
     <CookieConsent
       overlay
       location="bottom"
+      cookieName="myAwesomeCookieName2"
+      onAccept={() => {
+        // alert('Accept was triggered by clicking the Accept button');
+        setPointer(true);
+      }}
+      onDecline={() => {
+        // alert('nay!');
+        setPointer(true);
+      }}
+      expires={150}
       buttonText="Am inteles si sunt de accord!!"
+      declineButtonText="Nu sunt de acord!"
+      flipButtons
+      enableDeclineButton
+      style={{
+        padding: '20px',
+        height: '300px',
+        background: 'rgba(0, 0, 0, 0.76)',
+        color: '#FFF9F2',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: '16px',
+        fontWeight: 'bold',
+        zIndex: '-100',
+      }}
       buttonStyle={{
+        width: '300px',
         padding: '10px 24px',
         color: '#FFF9F2',
         background: '#4D4DFF',
@@ -19,8 +44,8 @@ const GDPR = () => {
         fontWeight: 'bold',
         height: '50px',
       }}
-      declineButtonText="Nu sunt de acord!"
       declineButtonStyle={{
+        width: '300px',
         padding: '10px 24px',
         height: '50px',
         backgroundColor: '#0D0D0D',
@@ -28,26 +53,7 @@ const GDPR = () => {
         fontSize: '16px',
         fontWeight: 'bold',
       }}
-      cookieName="myAwesomeCookieName2"
-      onAccept={() => {
-        alert('Accept was triggered by clicking the Accept button');
-      }}
-      enableDeclineButton
-      onDecline={() => {
-        alert('nay!');
-      }}
-      style={{
-        padding: '0 100px',
-        height: '100px',
-        background: '#FFF9F2',
-        color: '#0D0D0D',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        fontSize: '18px',
-        fontWeight: 'bold',
-      }}
-      expires={150}
+      contentStyle={{ textAlign: 'center', width: '70%' }}
     >
       Acest website foloseste cookies pentru a imbunatati experienta
       vizitatorilor!

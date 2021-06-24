@@ -97,40 +97,48 @@ const Footer = () => {
         <Text my="20px" fontSize="14px" textAlign="left">
           Urmareste-ne pe:
         </Text>
-        <Center>
-          <a href="https://www.facebook.com/asigurarideacasa" target="_blank">
-            <IconButton
-              variant="ghost"
-              fontSize="20px"
-              size="md"
-              mx="10px"
-              isRound
-              icon={<FaFacebookSquare />}
-            />
-          </a>
-          <a href="https://www.instagram.com/asigurarideacasa/" target="_blank">
-            <IconButton
-              variant="ghost"
-              fontSize="20px"
-              size="md"
-              mx="10px"
-              isRound
-              icon={<FaInstagramSquare />}
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
-            target="_blank"
+        <Center w="full">
+          <IconButton
+            variant="ghost"
+            fontSize="20px"
+            size="md"
+            mx="10px"
+            isRound
+            icon={<FaFacebookSquare />}
           >
-            <IconButton
-              variant="ghost"
-              fontSize="20px"
-              size="md"
-              mx="10px"
-              isRound
-              icon={<FaLinkedin />}
-            />
-          </a>
+            <a
+              href="https://www.facebook.com/asigurarideacasa"
+              target="_blank"
+            ></a>
+          </IconButton>
+
+          <IconButton
+            variant="ghost"
+            fontSize="20px"
+            size="md"
+            mx="10px"
+            isRound
+            icon={<FaInstagramSquare />}
+          >
+            <a
+              href="https://www.instagram.com/asigurarideacasa/"
+              target="_blank"
+            ></a>
+          </IconButton>
+
+          <IconButton
+            variant="ghost"
+            fontSize="20px"
+            size="md"
+            mx="10px"
+            isRound
+            icon={<FaLinkedin />}
+          >
+            <a
+              href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
+              target="_blank"
+            ></a>
+          </IconButton>
         </Center>
       </Flex>
       <Box pt="20px">

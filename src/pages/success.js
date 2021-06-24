@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-// import useWindowSize from 'react-use/lib/useWindowSize';
+
 import Confetti from 'react-confetti';
 import { Flex, Button, Heading, Text } from '@chakra-ui/react';
 
 const Success = () => {
-  //   const { width, height } = useWindowSize();
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState(800);
   const router = useRouter();
@@ -27,13 +26,17 @@ const Success = () => {
       pt="100"
     >
       <Confetti width={width} height={height} />
-      <Heading fontSize="48px">Felicitari!!</Heading>
-      <Heading mb="20px">Solicitarea ta a fost trimisa cu succes</Heading>
-      <Text mb="10px" fontSize="18px">
-        In scurt timp vei fi contactat de un reprezentant al companiei
+      <Heading width="full" textAlign="center" fontSize="48px">
+        Felicitari!!
+      </Heading>
+      <Heading width="full" textAlign="center" mb="20px" fontSize="32px">
+        Solicitarea de oferta a fost trimisa cu succes
+      </Heading>
+      <Text width="full" textAlign="center" mb="10px" fontSize="18px">
+        In scurt timp vei fi contactat de un reprezentant al companiei.
       </Text>
-      <Text mb="50px" fontSize="18px">
-        Pana atunci va dorim o experienta minunata pe websitul nostru!
+      <Text width="full" textAlign="center" mb="50px" fontSize="18px">
+        Pana atunci va dorim navigare placuta pe websitul nostru!
       </Text>
       <Button
         w="182px"

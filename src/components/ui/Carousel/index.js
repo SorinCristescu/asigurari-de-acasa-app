@@ -5,35 +5,6 @@ import styles from './Carousel.module.css';
 import { IconButton } from '@chakra-ui/react';
 import { FaLongArrowAltUp, FaLongArrowAltDown } from 'react-icons/fa';
 
-function ArrowLeft(props) {
-  const disabeld = props.disabled ? styles.arrowDisabled : '';
-  return (
-    <IconButton
-      isRound
-      size="md"
-      variant="ghost"
-      color="#808080"
-      onClick={props.onClick}
-      className={`${styles.arrow} ${styles.arrowLeft} ${disabeld}`}
-      icon={<FaLongArrowAltUp />}
-    />
-  );
-}
-
-function ArrowRight(props) {
-  const disabeld = props.disabled ? styles.arrowDisabled : '';
-  return (
-    <IconButton
-      isRound
-      size="md"
-      variant="ghost"
-      onClick={props.onClick}
-      className={`${styles.arrow} ${styles.arrowRight} ${disabeld}`}
-      icon={<FaLongArrowAltDown />}
-    />
-  );
-}
-
 const Carousel = ({ children, items, width, height }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [pause, setPause] = useState(false);
@@ -94,34 +65,33 @@ const Carousel = ({ children, items, width, height }) => {
         </div>
         {slider && (
           <div className={styles.navigation}>
-            <ArrowLeft
+            <IconButton
+              isRound
+              size="md"
+              variant="ghost"
+              position="absolute"
+              cursor="pointer"
+              color="#808080"
+              right="10px"
+              top="0"
               onClick={(e) => e.stopPropagation() || slider.prev()}
-              disabled={currentSlide === 0}
+              icon={<FaLongArrowAltUp />}
             />
-            <ArrowRight
+            <IconButton
+              isRound
+              size="md"
+              variant="ghost"
+              color="#808080"
               onClick={(e) => e.stopPropagation() || slider.next()}
-              disabled={currentSlide === slider.details().size - 1}
+              position="absolute"
+              cursor="pointer"
+              right="10px"
+              bottom="0"
+              icon={<FaLongArrowAltDown />}
             />
           </div>
         )}
       </div>
-      {/* {slider && (
-        <div className={styles.dots}>
-          {[...Array(slider.details().size).keys()].map((idx) => {
-            return (
-              <button
-                key={idx}
-                onClick={() => {
-                  slider.moveToSlideRelative(idx);
-                }}
-                className={`${styles.dot} ${
-                  currentSlide === idx ? 'styles.active' : ''
-                }`}
-              />
-            );
-          })}
-        </div>
-      )} */}
     </>
   );
 };

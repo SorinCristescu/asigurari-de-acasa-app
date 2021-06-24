@@ -42,7 +42,7 @@ const Layout = (props) => {
       </Slide>
       <Main>{props.children}</Main>
       <Footer />
-      <GDPR />
+      <GDPR setPointer={props.setPointer} />
     </Flex>
   );
 };
