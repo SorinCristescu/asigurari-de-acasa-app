@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
 import { Flex, Center, Text, Heading, Box, Button } from '@chakra-ui/react';

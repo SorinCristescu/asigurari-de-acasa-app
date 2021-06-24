@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
-
+import gsap from 'gsap';
 import Confetti from 'react-confetti';
 import { Flex, Button, Heading, Text } from '@chakra-ui/react';
 
 const Success = () => {
+  const subtitleRef = useRef(null);
+  const titleRef = useRef(null);
+  const text1Ref = useRef(null);
+  const text2Ref = useRef(null);
+  const buttonRef = useRef(null);
+
   const [width, setWidth] = useState(1000);
   const [height, setHeight] = useState(800);
   const router = useRouter();
+
   useEffect(() => {
     if (window) {
       setWidth(window.innerWidth);
@@ -15,7 +22,31 @@ const Success = () => {
     } else {
       return;
     }
-  }, [width, height]);
+
+    gsap.fromTo(
+      [
+        subtitleRef.current,
+        titleRef.current,
+        text1Ref.current,
+        text2Ref.current,
+        buttonRef.current,
+      ],
+      {
+        y: '20px',
+        opacity: 0,
+      },
+      {
+        duration: 1,
+        y: '0px',
+        opacity: 1,
+        ease: 'power3.inOut',
+        stagger: {
+          amount: 0.5,
+        },
+      }
+    );
+  }, [width, height, subtitleRef, titleRef, text1Ref, text2Ref, buttonRef]);
+
   return (
     <Flex
       direction="column"
@@ -26,19 +57,44 @@ const Success = () => {
       pt="100"
     >
       <Confetti width={width} height={height} />
-      <Heading width="full" textAlign="center" fontSize="48px">
+      <Heading
+        ref={titleRef}
+        width="full"
+        textAlign="center"
+        fontSize="48px"
+        mb="20px"
+      >
         Felicitari!!
       </Heading>
-      <Heading width="full" textAlign="center" mb="20px" fontSize="32px">
+      <Heading
+        ref={subtitleRef}
+        width="full"
+        textAlign="center"
+        mb="20px"
+        fontSize="32px"
+      >
         Solicitarea de oferta a fost trimisa cu succes
       </Heading>
-      <Text width="full" textAlign="center" mb="10px" fontSize="18px">
+      <Text
+        ref={text1Ref}
+        width="full"
+        textAlign="center"
+        mb="10px"
+        fontSize="18px"
+      >
         In scurt timp vei fi contactat de un reprezentant al companiei.
       </Text>
-      <Text width="full" textAlign="center" mb="50px" fontSize="18px">
+      <Text
+        ref={text2Ref}
+        width="full"
+        textAlign="center"
+        mb="50px"
+        fontSize="18px"
+      >
         Pana atunci va dorim navigare placuta pe websitul nostru!
       </Text>
       <Button
+        ref={buttonRef}
         w="182px"
         h="50px"
         variant="solid"

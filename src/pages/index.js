@@ -1,4 +1,8 @@
+import { useRef, useEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PageHead from '../components/layout/PageHead';
+
 import Image from 'next/image';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Hero from '../components/ui/Hero';
@@ -13,6 +17,94 @@ import { partners } from '../utils/partners';
 import { testimonials } from '../utils/testimonials';
 
 const Index = () => {
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+  const heading1 = useRef(null);
+  const heading2 = useRef(null);
+  const text2 = useRef(null);
+  const heading3 = useRef(null);
+  const insuranceCarouselRef = useRef(null);
+  const testimonialsCarouselRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      [heading1.current, insuranceCarouselRef.current],
+      {
+        y: '50px',
+        opacity: '0',
+        x: '0',
+      },
+      {
+        duration: 1.5,
+        y: '0px',
+        opacity: '1',
+        x: '0',
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          markers: false,
+          trigger: '#heading1',
+          //pin: true, // pin the trigger element while active
+          start: 'top bottom-=100', // when the top of the trigger hits the top of the viewport
+          end: '+=200', // end after scrolling 500px beyond the start
+          scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+      }
+    );
+    gsap.fromTo(
+      [heading2.current, text2.current],
+      {
+        y: '50px',
+        opacity: '0',
+        x: '0',
+      },
+      {
+        duration: 1.5,
+        y: '0px',
+        opacity: '1',
+        x: '0',
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          markers: false,
+          trigger: '#heading2',
+          //pin: true, // pin the trigger element while active
+          start: 'top bottom-=100', // when the top of the trigger hits the top of the viewport
+          end: '+=200', // end after scrolling 500px beyond the start
+          scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+      }
+    );
+    gsap.fromTo(
+      [heading3.current, testimonialsCarouselRef.current],
+      {
+        y: '50px',
+        opacity: '0',
+        x: '0',
+      },
+      {
+        duration: 1.5,
+        y: '0px',
+        opacity: '1',
+        x: '0',
+        ease: 'power3.inOut',
+        scrollTrigger: {
+          markers: false,
+          trigger: '#heading3',
+          //pin: true, // pin the trigger element while active
+          start: 'top bottom-=100', // when the top of the trigger hits the top of the viewport
+          end: '+=200', // end after scrolling 500px beyond the start
+          scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+      }
+    );
+  }, [
+    heading1,
+    insuranceCarouselRef,
+    heading2,
+    text2,
+    heading3,
+    testimonialsCarouselRef,
+  ]);
   return (
     <>
       <PageHead title="asigurari de acasa - Home" />
@@ -42,6 +134,8 @@ const Index = () => {
           justify="center"
         >
           <Heading
+            id="heading1"
+            ref={heading1}
             as="h2"
             fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
             mb="30px"
@@ -57,7 +151,10 @@ const Index = () => {
             sint.
           </Text> */}
         </Flex>
-        <Box width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}>
+        <Box
+          ref={insuranceCarouselRef}
+          width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
+        >
           <Carousel items={insurances} width="100%" height="350px">
             <Card
               headingSize="32px"
@@ -105,6 +202,8 @@ const Index = () => {
             pr="50px"
           >
             <Heading
+              id="heading2"
+              ref={heading2}
               as="h3"
               fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
               mb="30px"
@@ -116,7 +215,10 @@ const Index = () => {
               suplimentare la preturi accesibile.
             </Heading>
           </Box>
-          <Box w={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}>
+          <Box
+            ref={text2}
+            w={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
+          >
             <Text mb="30px" fontSize="lg" noOfLines={8}>
               Ca broker de asigurari avem parteneriate cu cele mai importante
               companii de asigurari, iar tu poti alege dintre ofertele lor.
@@ -156,6 +258,8 @@ const Index = () => {
         // my="100px"
       >
         <Heading
+          id="heading3"
+          ref={heading3}
           as="h2"
           fontSize={{ base: '32px', sm: '32px', md: '48px', lg: '48px' }}
           mb="30px"
@@ -166,6 +270,7 @@ const Index = () => {
           Ce spun clientii nostri despre noi
         </Heading>
         <Box
+          ref={testimonialsCarouselRef}
           width={{ base: '100%', sm: '100%', md: '100%', lg: '50%' }}
           h="500px"
           overflow="hidden"
