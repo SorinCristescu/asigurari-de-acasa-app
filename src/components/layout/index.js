@@ -42,7 +42,10 @@ const Layout = (props) => {
       </Slide>
       <Main>{props.children}</Main>
       <Footer />
-      <GDPR setPointer={props.setPointer} />
+      <GDPR
+        setMousePointer={props.setMousePointer}
+        mousePointer={props.mousePointer}
+      />
     </Flex>
   );
 };

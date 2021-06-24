@@ -18,13 +18,13 @@ const Header = ({ isMenuOpen, onToggle, onClose }) => {
       height="100px"
       width="100%"
       px={{ base: '20px', md: '100px', lg: '100px' }}
-      zIndex="10"
+      zIndex="100"
       background={isDark ? '#171923' : '#FBFBFB '}
     >
       <Box onClick={onClose}>
         <Link href="/">
           <a>
-            <Logo />
+            <Logo isAnimated />
           </a>
         </Link>
       </Box>

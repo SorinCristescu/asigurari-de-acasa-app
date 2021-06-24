@@ -93,7 +93,10 @@ const Footer = () => {
         justify="center"
         mt="50px"
       >
-        <Logo />
+        <Box ml={{ base: '0px', md: '125px' }}>
+          <Logo />
+        </Box>
+
         <Text my="20px" fontSize="14px" textAlign="left">
           Urmareste-ne pe:
         </Text>

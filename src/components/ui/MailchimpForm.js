@@ -138,7 +138,11 @@ const FormContainer = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <Input type="text" label="Nume / Denumire firma" name="name" />
+                <Input
+                  type="text"
+                  label="Nume Prenume / Denumire firma"
+                  name="name"
+                />
                 <Input type="email" label="Email" name="email" />
                 <Input type="phone" label="Telefon" name="phone" />
                 <TextArea label="Mesaj" name="message" />

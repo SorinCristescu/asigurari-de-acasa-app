@@ -12,8 +12,15 @@ const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
 import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }) {
-  const [pointer, setPointer] = useState(false);
+  const [mousePointer, setMousePointer] = useState(false);
   const router = useRouter();
+  console.log(mousePointer);
+
+  const handleMousePointer = () => {
+    localStorage.setItem('mouse-pointer', mousePointer);
+    setMousePointer(localStorage.getItem('mouse-pointer'));
+  };
+
   useEffect(() => {
     const handleRouteChange = (url) => {
       gtag.pageview(url);
@@ -22,7 +29,7 @@ function MyApp({ Component, pageProps }) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router.events, pointer]);
+  }, [router.events, mousePointer]);
 
   return (
     <ChakraProvider resetCSS theme={theme}>
@@ -31,18 +38,18 @@ function MyApp({ Component, pageProps }) {
           useSystemColorMode: true,
         }}
       >
-        {pointer ? (
+        {mousePointer ? (
           <AnimatedCursor
-            innerSize={8}
+            innerSize={10}
             outerSize={20}
             color="77, 77, 255"
             outerAlpha={0.2}
-            innerScale={0.5}
-            outerScale={3}
+            innerScale={1}
+            outerScale={2}
           />
         ) : null}
 
-        <Layout setPointer={setPointer}>
+        <Layout setMousePointer={handleMousePointer}>
           <Component {...pageProps} />
         </Layout>
       </ColorModeProvider>
