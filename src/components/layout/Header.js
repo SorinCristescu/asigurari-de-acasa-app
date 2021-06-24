@@ -49,6 +49,12 @@ const Header = ({ isMenuOpen, onToggle, onClose }) => {
           <Link href="/blog">
             <a>Blog</a>
           </Link>
+          <Link href="/dashboard">
+            <a>Dashboard</a>
+          </Link>
+          <Link href="/signin">
+            <a>Sign in</a>
+          </Link>
         </Flex>
         {/* <Link href="/blog/add">
           <a>Adauga o postare pe blog</a>

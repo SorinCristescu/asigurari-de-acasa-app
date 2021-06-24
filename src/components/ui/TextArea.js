@@ -23,7 +23,9 @@ const TextArea = ({ placeholder, label, name, ...rest }) => {
             isInvalid={form.errors[name] && form.touched[name]}
             mb="20px"
           >
-            <FormLabel htmlFor={name}>{label}</FormLabel>
+            <FormLabel fontWeight="bold" fontSize="14px" htmlFor={name}>
+              {label}
+            </FormLabel>
             <Textarea
               id={name}
               placeholder={placeholder}

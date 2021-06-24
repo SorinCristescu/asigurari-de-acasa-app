@@ -16,7 +16,9 @@ const Input = (props) => {
             isInvalid={form.errors[name] && form.touched[name]}
             mb="20px"
           >
-            <FormLabel htmlFor={name}>{label}</FormLabel>
+            <FormLabel fontWeight="bold" fontSize="14px" htmlFor={name}>
+              {label}
+            </FormLabel>
             <ChakraInput id={name} {...rest} {...field} borderRadius="0" />
             <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
           </FormControl>
