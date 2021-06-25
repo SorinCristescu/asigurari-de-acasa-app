@@ -83,9 +83,9 @@ const Dashboard = () => {
     }
   };
 
-  const filteredClients = clients.filter((client) =>
-    client.name.toLowerCase().includes(search.toLowerCase())
-  );
+  // const filteredClients = clients.filter((client) =>
+  //   client.name.toLowerCase().includes(search.toLowerCase())
+  // );
   return (
     <>
       <PageHead title="asigurari de acasa - Despre noi" />
@@ -190,11 +190,10 @@ const Dashboard = () => {
               <Th>Trimisa la data de</Th>
               <Th w="50px"></Th>
               <Th w="50px"></Th>
-              <Th w="50px"></Th>
             </Tr>
           </Thead>
           <Tbody overflowY="scroll">
-            {filteredClients?.map((client) => (
+            {/* {filteredClients?.map((client) => (
               <Tr>
                 <Td fontSize="12px">
                   {' '}
@@ -240,8 +239,8 @@ const Dashboard = () => {
                     variant="ghost"
                     cursor="pointer"
                     color="#808080"
-                    onClick={() => setIsOpen(true)}
-                    icon={<FaTrashAlt />}
+                    //   onClick={(e) => ()}
+                    icon={<FaPen />}
                   />
                 </Td>
                 <Td w="50px" fontSize="12px">
@@ -252,24 +251,12 @@ const Dashboard = () => {
                     variant="ghost"
                     cursor="pointer"
                     color="#808080"
-                    //   onClick={(e) => ()}
-                    icon={<FaPen />}
-                  />
-                </Td>
-                <Td fontSize="12px">
-                  <IconButton
-                    isRound
-                    size="md"
-                    fontSize="12px"
-                    variant="ghost"
-                    cursor="pointer"
-                    color="#808080"
-                    //   onClick={(e) => ()}
-                    icon={<FaLongArrowAltRight />}
+                    onClick={() => setIsOpen(true)}
+                    icon={<FaTrashAlt />}
                   />
                 </Td>
               </Tr>
-            ))}
+            ))} */}
           </Tbody>
           {/* <Tfoot>
             <Tr>

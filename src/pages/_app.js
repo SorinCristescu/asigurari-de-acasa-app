@@ -4,6 +4,7 @@ import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
 import theme from '../css/theme';
 import * as gtag from '../utils/gtag';
 import dynamic from 'next/dynamic';
+import { AuthProvider } from '../context/AuthContext';
 
 const AnimatedCursor = dynamic(() => import('react-animated-cursor'), {
   ssr: false,
@@ -14,7 +15,6 @@ import Layout from '../components/layout';
 function MyApp({ Component, pageProps }) {
   const [mousePointer, setMousePointer] = useState(false);
   const router = useRouter();
-  console.log(mousePointer);
 
   const handleMousePointer = () => {
     localStorage.setItem('mouse-pointer', mousePointer);
@@ -32,28 +32,30 @@ function MyApp({ Component, pageProps }) {
   }, [router.events, mousePointer]);
 
   return (
-    <ChakraProvider resetCSS theme={theme}>
-      <ColorModeProvider
-        options={{
-          useSystemColorMode: true,
-        }}
-      >
-        {mousePointer ? (
-          <AnimatedCursor
-            innerSize={10}
-            outerSize={20}
-            color="77, 77, 255"
-            outerAlpha={0.2}
-            innerScale={1}
-            outerScale={2}
-          />
-        ) : null}
+    <AuthProvider>
+      <ChakraProvider resetCSS theme={theme}>
+        <ColorModeProvider
+          options={{
+            useSystemColorMode: true,
+          }}
+        >
+          {mousePointer ? (
+            <AnimatedCursor
+              innerSize={10}
+              outerSize={20}
+              color="77, 77, 255"
+              outerAlpha={0.2}
+              innerScale={1}
+              outerScale={2}
+            />
+          ) : null}
 
-        <Layout setMousePointer={handleMousePointer}>
-          <Component {...pageProps} />
-        </Layout>
-      </ColorModeProvider>
-    </ChakraProvider>
+          <Layout setMousePointer={handleMousePointer}>
+            <Component {...pageProps} />
+          </Layout>
+        </ColorModeProvider>
+      </ChakraProvider>
+    </AuthProvider>
   );
 }
 

@@ -12,6 +12,7 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "@mailchimp/mailchimp_marketing": "^3.0.44",
+    "cookie": "^0.4.1",
     "formik": "^2.2.9",
     "framer-motion": "^4.0.3",
     "gsap": "^3.6.1",
