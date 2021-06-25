@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useContext } from 'react';
 import gsap from 'gsap';
 import { useRouter } from 'next/router';
 import PageHead from '../components/layout/PageHead';
@@ -9,6 +9,7 @@ import {
   FaSearch,
   FaTimes,
 } from 'react-icons/fa';
+import AuthContext from '../context/AuthContext';
 
 import {
   Input,
@@ -22,7 +23,6 @@ import {
   Tr,
   Th,
   Td,
-  IconButton,
   Tag,
   Stat,
   StatLabel,
@@ -40,12 +40,13 @@ import {
 import Moment from 'react-moment';
 
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
-
+  const router = useRouter();
   const [clients, setClients] = useState([]);
 
   const fetchClients = async () => {
@@ -58,10 +59,11 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
+    if (!user) {
+      router.push('/signin');
+    }
     fetchClients();
   }, []);
-
-  const handleSearch = (e) => {};
 
   const handleColorScheme = (type) => {
     if (type === 'Asigurare RCA') {
@@ -86,6 +88,21 @@ const Dashboard = () => {
   // const filteredClients = clients.filter((client) =>
   //   client.name.toLowerCase().includes(search.toLowerCase())
   // );
+
+  if (!user) {
+    return (
+      <Flex
+        py="100px"
+        direction="column"
+        w="100%"
+        minHeight="100vh"
+        align="center"
+        justify="center"
+      >
+        <Heading>Acess refuzat!</Heading>
+      </Flex>
+    );
+  }
   return (
     <>
       <PageHead title="asigurari de acasa - Despre noi" />

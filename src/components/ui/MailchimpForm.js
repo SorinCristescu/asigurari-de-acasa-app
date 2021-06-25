@@ -69,13 +69,25 @@ const FormContainer = () => {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    const res = await fetch('/api/mailchimp', {
+    const res = await fetch('/api/new', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: { 'Content-Type': 'application/json' },
     });
 
-    if (!res.ok) {
+    const mailchimpRes = await fetch('/api/mailchimp', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    const emailRes = await fetch('/api/email', {
+      method: 'POST',
+      body: JSON.stringify(values),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!res.ok || !mailchimpRes.ok || !emailRes.ok) {
       toast.error('Ceva nu a functionat corect!');
     } else {
       onSubmitProps.setSubmitting(false);

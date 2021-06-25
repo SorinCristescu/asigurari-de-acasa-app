@@ -1,18 +1,16 @@
 import { useContext, useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import DarkModeSwitch from './DarkModeSwitch';
 import AuthContext from '../../context/AuthContext';
 import Logo from '../ui/Logo';
 import { useColorMode, IconButton, Flex, Box, Button } from '@chakra-ui/react';
 import Dropdown from '../ui/Dropdown';
-import { FaBars, FaTimes, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { insurances } from '../../utils/insurances';
 
 const Header = ({ isMenuOpen, onToggle, onClose }) => {
   const { user, logout } = useContext(AuthContext);
-  const router = useRouter();
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   const logoRef = useRef(null);
@@ -115,42 +113,18 @@ const Header = ({ isMenuOpen, onToggle, onClose }) => {
             </Box>
           )}
 
-          {user ? (
-            <Button
-              ref={signoutRef}
-              // ref={ctaRef}
-              mr="20px"
-              width="100px"
-              variant="outline"
-              size="sm"
-              bg="#4D4DFF"
-              color="#FFF9F2"
-              _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-              // fontSize="18px"
-              borderRadius="0"
-              onClick={() => logout()}
-              leftIcon={<FaSignOutAlt />}
-            >
-              Logout
-            </Button>
+          {!user ? (
+            <Box ref={signinRef}>
+              <Link href="/signin">
+                <a>Login</a>
+              </Link>
+            </Box>
           ) : (
-            <Button
-              ref={signinRef}
-              // ref={ctaRef}
-              mr="20px"
-              width="100px"
-              variant="outline"
-              size="sm"
-              bg="#4D4DFF"
-              color="#FFF9F2"
-              _hover={{ bg: '#3333FF', color: '#FFF9F2' }}
-              // fontSize="18px"
-              borderRadius="0"
-              onClick={() => router.push('/signin')}
-              leftIcon={<FaSignInAlt />}
-            >
-              Login
-            </Button>
+            <Box ref={signoutRef} onClick={() => logout()}>
+              <Link href="/signin">
+                <a>Logout</a>
+              </Link>
+            </Box>
           )}
         </Flex>
         <Box ref={themeRef}>
