@@ -32,7 +32,7 @@ const handler = async (req, res) => {
       const emailResponse = await transporter.sendMail({
         from: process.env.EMAIL_USER,
         to: process.env.EMAIL_RECEIVER,
-        subject: `Contact form submission from ${name}`,
+        subject: `Contact pentru ofertare de la ${name}`,
         html: `<p>Ai o noua cerere de oferta de la ${name}</p><br/>
         <p><strong>Nume:</strong> ${name}</p><br/>
         <p><strong>Email:</strong> ${email}</p><br/>
@@ -40,7 +40,6 @@ const handler = async (req, res) => {
         <p><strong>Tip de asigurare dorita:</strong> ${insuranceType}</p><br/>
         <p><strong>Mesaj:</strong> ${message}</p>`,
       });
-      console.log('Message sent!', emailResponse);
     } catch (error) {
       console.log(error);
     }

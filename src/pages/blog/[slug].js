@@ -44,7 +44,7 @@ const Li = ({ children, ...props }) => (
 
 const BlogPost = ({ post }) => {
   const router = useRouter();
-  console.log('post', post);
+
   const deleteHandler = async (e) => {
     if (confirm('Are you sure?')) {
       const res = await fetch(
