@@ -69,7 +69,7 @@ const FormContainer = () => {
   });
 
   const onSubmit = async (values, onSubmitProps) => {
-    const res = await fetch('/api/new', {
+    const res = await fetch('/api/clients/new', {
       method: 'POST',
       body: JSON.stringify(values),
       headers: { 'Content-Type': 'application/json' },

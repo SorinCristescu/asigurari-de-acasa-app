@@ -1,31 +1,34 @@
-import nodemailer from 'nodemailer';
+import cookie from 'cookie';
 
 const handler = async (req, res) => {
   const method = req.method;
   if (method === 'GET') {
-    const { name, email, message, phone, insuranceType } = req.body;
+    if (!req.headers.cookie) {
+      res.status(404).json({ message: 'Not Authorized!' });
+      return;
+    }
 
-    const dataForm = {
-      email_address: email,
-      status: 'subscribed',
-      merge_fields: {
-        NAME: name,
-        PHONE: phone,
-        MESSAGE: message,
-        INSURANCE: insuranceType,
-      },
-    };
-    const data = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(dataForm),
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `anystring: ${API_KEY}`,
-      },
-    });
-    const response = await data.json();
+    const { token } = cookie.parse(req.headers.cookie);
 
-    return res.status(201).json({ message: 'Sucess', sender: response });
+    const strapiRes = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/customers`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const customers = await strapiRes.json();
+    if (strapiRes.ok) {
+      res.status(200).json({ customers });
+    } else {
+      res.status(403).json({ message: 'User forbidden!' });
+    }
+  } else {
+    res.setHeader('Allow', ['GET', 'POST']);
+    res.status(405).json({ message: `Method ${req.method} not allowed` });
   }
 };
 

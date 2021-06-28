@@ -1,6 +1,9 @@
 import { useRef, useEffect, useState, useContext } from 'react';
-import gsap from 'gsap';
+import { parseCookies } from '../utils/cookie';
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import PageHead from '../components/layout/PageHead';
 import {
   FaLongArrowAltRight,
@@ -36,34 +39,59 @@ import {
   AlertDialogOverlay,
   Button,
   Skeleton,
+  IconButton,
 } from '@chakra-ui/react';
 import Moment from 'react-moment';
 
-const Dashboard = () => {
+const Dashboard = ({ clients, token }) => {
   const { user } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState('');
-  const router = useRouter();
-  const [clients, setClients] = useState([]);
+  const [clientId, setClientId] = useState(null);
 
-  const fetchClients = async () => {
-    try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/customers`);
-      const customers = await res.json();
-      setClients(customers);
-    } catch (error) {
-      console.log(error);
+  const router = useRouter();
+
+  const openModal = (id) => {
+    setIsOpen(true);
+    setClientId(id);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setClientId(null);
+  };
+  const handleDelete = async () => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/customers/${clientId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.ok) {
+      setIsOpen(false);
+      toast.success('Inregistrarea a fost stearsa!');
+      router.push('/dashboard');
+    } else {
+      toast.error('Ceva nu a functionat corect!');
+      setIsOpen(false);
     }
   };
-  useEffect(() => {
-    if (!user) {
-      router.push('/signin');
-    }
-    fetchClients();
-  }, []);
+
+  const updateClient = () => {};
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/signin');
+  //   }
+  //   fetchClients();
+  // }, []);
 
   const handleColorScheme = (type) => {
     if (type === 'Asigurare RCA') {
@@ -85,9 +113,9 @@ const Dashboard = () => {
     }
   };
 
-  // const filteredClients = clients.filter((client) =>
-  //   client.name.toLowerCase().includes(search.toLowerCase())
-  // );
+  const filteredClients = clients.filter((client) =>
+    client.name.toLowerCase().includes(search.toLowerCase())
+  );
 
   if (!user) {
     return (
@@ -106,34 +134,18 @@ const Dashboard = () => {
   return (
     <>
       <PageHead title="asigurari de acasa - Despre noi" />
-      <AlertDialog
-        isOpen={isOpen}
-        leastDestructiveRef={cancelRef}
-        onClose={onClose}
-      >
-        <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
-              Sterge Cerere
-            </AlertDialogHeader>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
-            <AlertDialogBody>
-              Esti sigur? Actiunea este ireversibila! Inregistrarea va fi
-              stearsa din baza de date fara a putea recupera informatia
-              ulterior.
-            </AlertDialogBody>
-
-            <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
-                Renunta
-              </Button>
-              <Button colorScheme="red" onClick={onClose} ml={3}>
-                Sterge
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialogOverlay>
-      </AlertDialog>
       <Flex
         flexWrap="wrap"
         py="100px"
@@ -210,8 +222,8 @@ const Dashboard = () => {
             </Tr>
           </Thead>
           <Tbody overflowY="scroll">
-            {/* {filteredClients?.map((client) => (
-              <Tr>
+            {filteredClients?.map((client) => (
+              <Tr key={client.id}>
                 <Td fontSize="12px">
                   {' '}
                   {loading ? <Skeleton height="20px" /> : client.name}
@@ -268,20 +280,45 @@ const Dashboard = () => {
                     variant="ghost"
                     cursor="pointer"
                     color="#808080"
-                    onClick={() => setIsOpen(true)}
+                    onClick={() => openModal(client.id)}
                     icon={<FaTrashAlt />}
                   />
+                  <AlertDialog
+                    isOpen={isOpen}
+                    leastDestructiveRef={cancelRef}
+                    onClose={onClose}
+                  >
+                    <AlertDialogOverlay>
+                      <AlertDialogContent>
+                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                          Sterge Cerere
+                        </AlertDialogHeader>
+
+                        <AlertDialogBody>
+                          Esti sigur? Actiunea este ireversibila! Inregistrarea
+                          va fi stearsa din baza de date fara a putea recupera
+                          informatia ulterior.
+                        </AlertDialogBody>
+
+                        <AlertDialogFooter>
+                          <Button ref={cancelRef} onClick={closeModal}>
+                            Renunta
+                          </Button>
+                          <Button
+                            colorScheme="red"
+                            onClick={() => handleDelete(client.id)}
+                            ml={3}
+                          >
+                            Sterge
+                          </Button>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialogOverlay>
+                  </AlertDialog>
                 </Td>
               </Tr>
-            ))} */}
+            ))}
           </Tbody>
-          {/* <Tfoot>
-            <Tr>
-              <Th>To convert</Th>
-              <Th>into</Th>
-              <Th isNumeric>multiply by</Th>
-            </Tr>
-          </Tfoot> */}
         </Table>
       </Flex>
     </>
@@ -289,3 +326,21 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookies(req);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/customers`, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const clients = await res.json();
+
+  return {
+    props: {
+      clients,
+      token,
+    },
+  };
+}

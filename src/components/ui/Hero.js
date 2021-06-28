@@ -38,6 +38,7 @@ const Hero = ({ title, subtitle, children }) => {
       align="center"
       justify="flex-start"
       pt={{ base: '100px', sm: '100px', md: '0px', lg: '0px' }}
+      zIndex="1"
     >
       <Box w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }}>
         <Heading

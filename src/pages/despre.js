@@ -1,17 +1,27 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import { useRouter } from 'next/router';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PageHead from '../components/layout/PageHead';
 import Hero from '../components/ui/Hero';
 import MailchimpForm from '../components/ui/MailchimpForm';
 import Card from '../components/ui/Card';
-import { Flex, Text, Heading, Box, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  Heading,
+  Box,
+  Wrap,
+  WrapItem,
+  Center,
+} from '@chakra-ui/react';
 import About from '../svg/about.svg';
 import { values } from '../utils/values';
 import SlideY from '../utils/animation/slideY';
 
 const Despre = () => {
-  const router = useRouter();
+  if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+  }
   const headingRef = useRef(null);
   const text1Ref = useRef(null);
   const text2Ref = useRef(null);
@@ -67,6 +77,7 @@ const Despre = () => {
         w="100%"
         align="flex-start"
         justify="center"
+        zIndex="1"
       >
         <Box
           w={{ base: '100%', sm: '100%', md: '50%', lg: '50%' }}

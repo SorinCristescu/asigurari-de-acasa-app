@@ -19,18 +19,18 @@ const handler = async (req, res) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
+      host: process.env.EMAIL_SERVER,
       port: 465,
-      secure: true,
+      // secure: true,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASSWORD,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD,
       },
     });
 
     try {
       const emailResponse = await transporter.sendMail({
-        from: email,
+        from: process.env.EMAIL_USER,
         to: process.env.EMAIL_RECEIVER,
         subject: `Contact form submission from ${name}`,
         html: `<p>Ai o noua cerere de oferta de la ${name}</p><br/>
@@ -40,12 +40,12 @@ const handler = async (req, res) => {
         <p><strong>Tip de asigurare dorita:</strong> ${insuranceType}</p><br/>
         <p><strong>Mesaj:</strong> ${message}</p>`,
       });
-      console.log('Message', emailResponse.messageId);
+      console.log('Message sent!', emailResponse);
     } catch (error) {
       console.log(error);
     }
 
-    return res.status(201).json({ message: 'Sucess', sender: emailResponse });
+    return res.status(201).json({ message: 'Message sent!' });
   }
 };
 
