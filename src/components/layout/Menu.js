@@ -44,33 +44,42 @@ const Menu = ({ onToggle, bgColor, colorMode, color }, ref) => {
           </Link>
         </Box>
         <Flex align="center" justify="center" w="full" mt="50px">
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            onClick={onToggle}
-            icon={<FaFacebookSquare />}
-          />
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            onClick={onToggle}
-            icon={<FaInstagramSquare />}
-          />
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            onClick={onToggle}
-            icon={<FaLinkedin />}
-          />
+          <a href="https://www.facebook.com/asigurarideacasa" target="_blank">
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              onClick={onToggle}
+              icon={<FaFacebookSquare />}
+            />
+          </a>
+          <a href="https://www.instagram.com/asigurarideacasa/" target="_blank">
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              onClick={onToggle}
+              icon={<FaInstagramSquare />}
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
+            target="_blank"
+          >
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              onClick={onToggle}
+              icon={<FaLinkedin />}
+            />
+          </a>
         </Flex>
       </Flex>
     </Flex>

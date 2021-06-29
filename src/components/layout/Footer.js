@@ -1,7 +1,7 @@
 import { Flex, Box, Center, Text, IconButton } from '@chakra-ui/react';
 
 import Link from 'next/link';
-import Logo from '../ui/Logo';
+import LogoSmall from '../ui/LogoSmall';
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -93,56 +93,62 @@ const Footer = () => {
         justify="center"
         mt="50px"
       >
-        <Box ml={{ base: '0px', md: '125px' }}>
-          <Logo />
+        <Box ml={{ base: '0px', md: '0px' }}>
+          <LogoSmall />
         </Box>
 
-        <Text my="20px" fontSize="14px" textAlign="left">
+        <Text
+          width="100%"
+          my="20px"
+          fontSize="14px"
+          textAlign={{ base: 'left', md: 'center', lg: 'center' }}
+        >
           Urmareste-ne pe:
         </Text>
-        <Center w="full">
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaFacebookSquare />}
+        <Flex align="center" justify="space-between">
+          <a
+            style={{ marginRight: '0' }}
+            href="https://www.facebook.com/asigurarideacasa"
+            target="_blank"
           >
-            <a
-              href="https://www.facebook.com/asigurarideacasa"
-              target="_blank"
-            ></a>
-          </IconButton>
-
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaInstagramSquare />}
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaFacebookSquare />}
+            ></IconButton>
+          </a>
+          <a
+            style={{ marginRight: '0' }}
+            href="https://www.instagram.com/asigurarideacasa/"
+            target="_blank"
           >
-            <a
-              href="https://www.instagram.com/asigurarideacasa/"
-              target="_blank"
-            ></a>
-          </IconButton>
-
-          <IconButton
-            variant="ghost"
-            fontSize="20px"
-            size="md"
-            mx="10px"
-            isRound
-            icon={<FaLinkedin />}
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaInstagramSquare />}
+            ></IconButton>
+          </a>
+          <a
+            style={{ marginRight: '0' }}
+            href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
+            target="_blank"
           >
-            <a
-              href="https://www.linkedin.com/in/asigurari-de-acasa-779466215/"
-              target="_blank"
-            ></a>
-          </IconButton>
-        </Center>
+            <IconButton
+              variant="ghost"
+              fontSize="20px"
+              size="md"
+              mx="10px"
+              isRound
+              icon={<FaLinkedin />}
+            ></IconButton>
+          </a>
+        </Flex>
       </Flex>
       <Box pt="20px">
         <Flex
