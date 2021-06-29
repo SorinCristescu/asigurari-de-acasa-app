@@ -24,6 +24,7 @@ const Menu = ({ onToggle, bgColor, colorMode, color }, ref) => {
         align="flex-start"
         justify="center"
         fontSize="48px"
+        mt="100px"
       >
         {insurances.map((link, index) => (
           <Box key={index} onClick={onToggle}>
