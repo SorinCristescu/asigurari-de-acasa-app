@@ -16,7 +16,7 @@ const Steps = ({ steps }) => {
   useEffect(() => {
     timer.current = setInterval(() => {
       next();
-    }, 13500);
+    }, 17500);
     return () => {
       clearInterval(timer.current);
     };
@@ -29,7 +29,7 @@ const Steps = ({ steps }) => {
         height: '50px',
       },
       {
-        duration: 12,
+        duration: 16,
         height: '232px',
         ease: 'power1.inOut',
       }

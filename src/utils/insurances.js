@@ -20,12 +20,12 @@ export const insurances = [
       {
         count: '03',
         title: 'Trimite documente',
-        text: 'Vei transmite pe whatsApp sau pe adresa de e-mail office@asigurarideacasa.ro, poze lizibile ale urmatoarelor documente: talon, CI/BI, carnet conducere,pentru persoane fizice, iar pentru persoane juridice : CUI si talon. In termen de o zi lucratoare reprezentantul nostru iti va pune la dispozitie oferta asiguratorilor RCA pentru masina ta. Compara si alege polita potrivita pentru tine!',
+        text: 'Vei transmite pe WhatsApp sau pe adresa de e-mail office@asigurarideacasa.ro, poze lizibile ale urmatoarelor documente: talon, CI/BI, carnet conducere,pentru persoane fizice, iar pentru persoane juridice : CUI si talon. In termen de o zi lucratoare reprezentantul nostru iti va pune la dispozitie oferta asiguratorilor RCA pentru masina ta. Compara si alege polita potrivita pentru tine!',
       },
       {
         count: '04',
         title: 'Alege asiguratorul',
-        text: 'Comunici pe e-mail sau whatApp pentru ce asigurator ai optat, precum si modalitatea de plata dorita ( card bancar sau OP ), urmand sa primesti pe e-mail sau whatsApp link-ul pentru plata cu cardul sau instiintarea de plata pentru plata prin OP.',
+        text: 'Comunici pe e-mail sau WhatsApp pentru ce asigurator ai optat, precum si modalitatea de plata dorita ( card bancar sau OP ), urmand sa primesti pe e-mail sau whatsApp link-ul pentru plata cu cardul sau instiintarea de plata pentru plata prin OP.',
       },
       {
         count: '05',

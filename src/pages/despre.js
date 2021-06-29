@@ -112,9 +112,9 @@ const Despre = () => {
             <Text mb="30px" fontSize="lg" noOfLines={8}>
               Asigurari de acasa, a aparut din dorinta de a te ajuta, de ati
               oferi consultanta pentru ca tu să iei cea mai bună decizie.
-              Impreuna cu partenerul sau Destine Asigurare Reasigurare SRL, iti
-              stam la dispozitie pe toată durata de valabilitate a asigurării
-              tale!
+              Impreuna cu partenerul sau Destine Broker de Asigurare Reasigurare
+              SRL, iti stam la dispozitie pe toată durata de valabilitate a
+              asigurării tale!
             </Text>
           </SlideY>
           <SlideY

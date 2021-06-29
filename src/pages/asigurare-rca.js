@@ -81,7 +81,7 @@ export default AsigurareRCA;
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/pages`);
   const pages = await res.json();
-  console.log('pages', pages);
+
   return {
     props: {
       pages,
