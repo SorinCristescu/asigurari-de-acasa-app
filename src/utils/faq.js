@@ -10,7 +10,7 @@ export const faq = [
     intrebare:
       'Ce alte modalitati de plata ale asigurarii mai am la dispozitie ?',
     raspuns:
-      'Plata prin OP in baza unei instiintari de plata si plata in numerar la caseria bancii tale, in baza unei chitante.In functie de optiunea ta, fiecare dintre cele doua documente iti vor fi transmise anterior pe e-mail/whatsup. Pentru a grabi procesul de emitere al politelor de asigurare in toate cele 3 cazuri este, nevoie sa ne transmiti documentul de confirmare al platii.',
+      'Plata prin OP in baza unei instiintari de plata si plata in numerar la caseria bancii tale, in baza unei chitante.In functie de optiunea ta, fiecare dintre cele doua documente iti vor fi transmise anterior pe e-mail/WhatsApp. Pentru a grabi procesul de emitere al politelor de asigurare in toate cele 3 cazuri este, nevoie sa ne transmiti documentul de confirmare al platii.',
   },
   {
     id: 3,

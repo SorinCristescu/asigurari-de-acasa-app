@@ -30,7 +30,7 @@ export const insurances = [
       {
         count: '05',
         title: 'Plateste asigurarea',
-        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau whatsApp documentul de confirmare a platii. ',
+        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau WhatsApp documentul de confirmare a platii. ',
       },
       {
         count: '06',
@@ -59,7 +59,7 @@ export const insurances = [
       {
         count: '03',
         title: 'Alege asiguratorul',
-        text: 'In termen de o zi lucratoare reprezentantul nostru iti va pune la dispozitie ofertele asiguratorilor pentru asigurarea CASCO a masinii tale. Compara si alege polita potrivita pentru tine! Comunici pe e-mail sau whatApp pentru ce asigurator ai optat, precum si modalitatea de plata dorita ( card bancar sau OP ), urmand sa primesti pe e-mail sau whatsApp link-ul pentru plata cu cardul sau instiintarea de plata pentru plata prin OP.',
+        text: 'In termen de o zi lucratoare reprezentantul nostru iti va pune la dispozitie ofertele asiguratorilor pentru asigurarea CASCO a masinii tale. Compara si alege polita potrivita pentru tine! Comunici pe e-mail sau whatApp pentru ce asigurator ai optat, precum si modalitatea de plata dorita ( card bancar sau OP ), urmand sa primesti pe e-mail sau WhatsApp link-ul pentru plata cu cardul sau instiintarea de plata pentru plata prin OP.',
       },
       {
         count: '04',
@@ -69,7 +69,7 @@ export const insurances = [
       {
         count: '05',
         title: 'Plateste asigurarea',
-        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau whatsApp documentul de confirmare a platii.',
+        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau WhatsApp documentul de confirmare a platii.',
       },
       {
         count: '06',
@@ -103,7 +103,7 @@ export const insurances = [
       {
         count: '04',
         title: 'Plateste asigurarea',
-        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau whatsApp documentul de confirmare a platii.',
+        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau WhatsApp documentul de confirmare a platii.',
       },
       {
         count: '05',
@@ -176,7 +176,7 @@ export const insurances = [
       {
         count: '04',
         title: 'Plateste asigurarea',
-        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau whatsApp documentul de confirmare a platii.',
+        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau WhatsApp documentul de confirmare a platii.',
       },
       {
         count: '05',
@@ -244,7 +244,7 @@ export const insurances = [
       {
         count: '04',
         title: 'Plateste asigurarea',
-        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau whatsApp documentul de confirmare a platii.',
+        text: 'Faci plata cu cardul sau prin OP si transmiti pe e-mail sau WhatsApp documentul de confirmare a platii.',
       },
       {
         count: '05',
