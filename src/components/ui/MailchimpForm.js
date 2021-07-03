@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Formik, Form } from 'formik';
@@ -44,7 +44,7 @@ const FormContainer = () => {
     if (pathname === '/' || pathname === '/blog' || pathname === '/despre') {
       return insurances[0].value;
     } else {
-      return initialInsuranceType;
+      return initialInsuranceType[0];
     }
   };
 
@@ -55,6 +55,7 @@ const FormContainer = () => {
     message: '',
     insuranceType: createInitialInsuranceType(),
   };
+
   const validationSchema = Yup.object({
     name: Yup.string().required('Numele este obligatoriu!'),
     // insurance: Yup.string().required('Alege un tip de asigurare dorit!'),
@@ -63,10 +64,10 @@ const FormContainer = () => {
       .required('Adresa de email este obligatorie!'),
     phone: Yup.string().required('Numarul de telefon este obligatoriu!'),
     message: Yup.string(),
-    insuranceType: Yup.string().required(
-      'Tipul de asigurare este obligatorie!'
-    ),
+    insuranceType: Yup.string(),
   });
+
+  useEffect(() => console.log(initialValues), [initialValues]);
 
   const onSubmit = async (values, onSubmitProps) => {
     const res = await fetch('/api/clients/new', {
@@ -145,6 +146,7 @@ const FormContainer = () => {
             setSubmitting,
             resetForm,
             handleChange,
+            handleBlur,
           }) => {
             return (
               <Form>
@@ -175,6 +177,8 @@ const FormContainer = () => {
                       name="insuranceType"
                       value={values.insuranceType}
                       onChange={handleChange}
+                      onBlur={handleBlur}
+                      // placeholder="Alege un tip de asigurare"
                     />
                   </div>
                 </SlideY>

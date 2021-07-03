@@ -9,6 +9,7 @@ const Select = ({
   fontWeight,
   placeholder,
   onChange,
+  onBlur,
   name,
   value,
   ...rest
@@ -29,6 +30,7 @@ const Select = ({
               fontSize={fontSize}
               fontWeight={fontWeight}
               onChange={onChange}
+              onBlur={onBlur}
               value={value}
               id={name}
               {...rest}
