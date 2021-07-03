@@ -67,8 +67,6 @@ const FormContainer = () => {
     insuranceType: Yup.string(),
   });
 
-  useEffect(() => console.log(initialValues), [initialValues]);
-
   const onSubmit = async (values, onSubmitProps) => {
     const res = await fetch('/api/clients/new', {
       method: 'POST',
