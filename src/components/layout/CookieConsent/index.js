@@ -4,7 +4,7 @@ import CookieConsent, {
   getCookieConsentValue,
 } from 'react-cookie-consent';
 
-const GDPR = ({ setMousePointer, mousePointer }) => {
+const GDPR = () => {
   return (
     <CookieConsent
       overlay
@@ -12,14 +12,9 @@ const GDPR = ({ setMousePointer, mousePointer }) => {
       cookieName="myAwesomeCookieName2"
       onAccept={() => {
         // alert('Accept was triggered by clicking the Accept button');
-        const pointerStyle = localStorage.getItem('mouse-pointer');
-        setMousePointer(!pointerStyle);
       }}
       onDecline={() => {
         // alert('nay!');
-
-        const pointerStyle = localStorage.getItem('mouse-pointer');
-        setMousePointer(!pointerStyle);
       }}
       expires={150}
       buttonText="Am inteles si sunt de accord!!"
