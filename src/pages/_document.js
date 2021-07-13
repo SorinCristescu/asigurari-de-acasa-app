@@ -7,6 +7,10 @@ export default class Document extends NextDocument {
     return (
       <Html>
         <Head>
+          <meta
+            name="google-site-verification"
+            content="45PAr0qTBcWn-eT_dMpVBXd6AYKcvJbocUuiiUAMda4"
+          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
