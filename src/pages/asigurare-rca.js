@@ -17,11 +17,10 @@ const AsigurareRCA = () => {
   const insuranceName = insurances[0].title;
   return (
     <>
-      {/* <PageHead
-        title={SEO.title}
-        description={SEO.description}
-        keywords={SEO.keywords}
-      /> */}
+      <PageHead
+        title="asigurari de acasa - Asigurare RCA"
+        description="asigurarideacasa.ro ofera servicii de intermediere si consultanta in domeniul asigurarilor generale si de viata. Emitem polite in numele societatilor de asigurare" keywords="asigurari, asigurare, oferte, asigurarideacasa.ro, RCA, CASCO, Calatorie, Locuinta, Facultativa, Transport, Sanatate, Accidente, PAD"
+      />
 
       {/* HERO
     ----------------------*/}

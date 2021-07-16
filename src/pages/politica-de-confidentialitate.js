@@ -9,7 +9,7 @@ const PoliticaDeConfidentialitate = () => {
       w={{ base: '100%', md: '100%', lg: '70%' }}
       pb="100px"
     >
-      <PageHead title="asigurari de acasa - Politica de confidentialitate" />
+      <PageHead title="asigurari de acasa - Politica de confidentialitate" description="asigurarideacasa.ro ofera servicii de intermediere si consultanta in domeniul asigurarilor generale si de viata. Emitem polite in numele societatilor de asigurare" keywords="asigurari, asigurare, oferte, asigurarideacasa.ro, RCA, CASCO, Calatorie, Locuinta, Facultativa, Transport, Sanatate, Accidente, PAD"/>
       {/* HERO
     ----------------------*/}
 

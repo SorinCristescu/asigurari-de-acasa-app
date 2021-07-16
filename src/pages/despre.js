@@ -60,7 +60,7 @@ const Despre = () => {
 
   return (
     <>
-      <PageHead title="asigurari de acasa - Despre noi" />
+      <PageHead title="asigurari de acasa - Despre noi" description="asigurarideacasa.ro ofera servicii de intermediere si consultanta in domeniul asigurarilor generale si de viata. Emitem polite in numele societatilor de asigurare" keywords="asigurari, asigurare, oferte, asigurarideacasa.ro, RCA, CASCO, Calatorie, Locuinta, Facultativa, Transport, Sanatate, Accidente, PAD"/>
       {/* HERO
     ----------------------*/}
       <Hero
