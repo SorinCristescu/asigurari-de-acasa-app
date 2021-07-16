@@ -116,3 +116,34 @@ export async function getServerSideProps() {
     },
   };
 }
+
+// export async function getStaticProps({ params }) {
+//   const { post } = params
+
+//   const data = await fetch(
+//     `${process.env.NEXT_PUBLIC_BASE_URL}/posts?slug=${post}`
+//   )
+//   const resData = await data.json()
+
+//   const finalData = resData[0]
+
+//   return {
+//     props: { finalData },
+//     revalidate: 10 //will regenerate page when request comes at every 10 seconds
+
+//   }
+// }
+
+// export async function getStaticPaths() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/posts`)
+//   const posts = await res.json()
+
+//   const paths = posts?.map(({ slug }) => ({
+//     params: { post: slug }
+//   }))
+
+//   return {
+//     paths,
+//     fallback: 'blocking'
+//   }
+// }
