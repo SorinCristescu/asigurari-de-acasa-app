@@ -6,7 +6,7 @@ import { FaLongArrowAltRight } from 'react-icons/fa';
 
 const BlogCard = ({ post }) => {
   const { name, slug, createdAt, description, image_url } = post;
-
+  console.log(slug);
   return (
     <Flex
       w="250px"
